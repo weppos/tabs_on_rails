@@ -18,14 +18,14 @@ module TabsOnRails
 
   module Version
     MAJOR = 0
-    MINOR = 0
+    MINOR = 1
     TINY  = 0
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
 
   VERSION         = Version::STRING
-  STATUS          = 'development'
-  BUILD           = '$Id$'.match(/(\d+)/).to_a.first
+  STATUS          = 'alpha'
+  BUILD           = ''.match(/(\d+)/).to_a.first
 
 end
