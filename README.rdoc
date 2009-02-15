@@ -3,5 +3,8 @@
 TabsOnRails is a simple Rails plugin for creating and managing Tabs.
 It provides helpers for creating tabs with a flexible interface.
 
+*WARNING*: This library has not been released yet. 
+This package seems stable, but should be considered a development release.
+
 
 Copyright (c) 2009 Simone Carletti, released under the MIT license
