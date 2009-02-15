@@ -48,12 +48,12 @@ module TabsOnRails
     module HelperMethods
 
       def tabs_tag(builder = nil, &block)
-        raise ArgumentError, "Missing block" unless block_given?
+        raise LocalJumpError, "no block given" unless block_given?
         tabs  = Tabs.new(self, builder)
 
-        concat(tabs.open_tabs)
+        concat(tabs.open_tabs.to_s)
         yield  tabs
-        concat(tabs.close_tabs)
+        concat(tabs.close_tabs.to_s)
       end
 
     end

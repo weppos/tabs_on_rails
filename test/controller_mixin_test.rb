@@ -53,5 +53,4 @@ class ControllerMixinTest < ActiveSupport::TestCase
 </ul>}, @response.body)
   end
 
-
 end
