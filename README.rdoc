@@ -1,0 +1,3 @@
+= TabsOnRails
+
+Copyright (c) 2009 Simone Carletti, released under the MIT license
