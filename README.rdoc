@@ -7,4 +7,155 @@ It provides helpers for creating tabs with a flexible interface.
 This package seems stable, but should be considered a development release.
 
 
-Copyright (c) 2009 Simone Carletti, released under the MIT license
+== Rails Installation
+
+=== As a Gem
+
+This is the preferred way to install TabsOnRails and the best way if you want install a stable version.
+You can specify the GEM dependency in your application environment.rb file:
+
+  Rails::Initializer.run do |config|
+    
+    # other configurations
+    
+    config.gem "weppos-tabs_on_rails", :lib => "tabs_on_rails", :source => "http://gems.github.com"
+  end
+
+
+=== As a Plugin
+
+This is the preferred way if you want to live on the edge and install a development version.
+
+  $ script/plugin install git://github.com/weppos/tabs_on_rails.git
+
+
+== Quick Start
+
+In your template use the <tt>tabs_tag</tt> helper to create your tab.
+
+  <% tabs_tab do |tab| %>
+    <%= tab.home, 'Homepage', root_path %>
+    <%= tab.dashboard, 'Dashboard', dashboard_path %>
+    <%= tab.account, 'Account', account_path %>
+  <% end %>
+
+The example above produces the following HTML output.
+
+  <ul>
+    <li><a href="/">Homepage</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/account">Account</a></li>
+  </ul>
+
+The usage is similar to the Rails route file.
+You create named tabs with the syntax <tt>tab.name_of_tab</tt>. 
+
+The name you use creating a tab is the same you're going to refer to in your controller
+when you want to mark a tab as the current_tab.
+
+  class DashboardController < ApplicationController
+    current_tab :dashboard
+  end
+
+Now, if the action belongs to DashboardController, the template will automatically render the following HTML code.
+
+  <ul>
+    <li><a href="/">Homepage</a></li>
+    <li><span>Dashboard</span></li>
+    <li><a href="/account">Account</a></li>
+  </ul>
+
+
+== Restricting current_tab scope
+
+The <tt>current_tab</tt> method understands all options you are used to pass to a Rails controller filter.
+In fact, behind the scenes this method uses a <tt>before_filter</tt> to set a special <tt>@current_tab</tt> variable.
+
+Taking advantage of Rails filter options, you can restrict a tab to a selected group of actions in the same controller.
+
+  class PostsController < ApplicationController
+    current_tab :admin
+    current_tab :posts, :only => [ :index, :show ]
+  end
+  
+  class ApplicationController < ActionController::Base
+    current_tab :admin, :if => :admin_controller?
+    
+    def admin_controller?
+      self.class.name =~ /^Admin(::|Controller)/
+    end
+  end
+
+
+== Tab Builders
+
+The <tt>Builder</tt> is responsible for creating the tabs HTML code. This library is bundled with two <tt>Builders</tt>:
+
+<tt>Tabs::Builder</tt>:: this is the abstract interface for any custom builder.
+<tt>Tabs::TabsBuilder</tt>:: this is the default builder.
+
+=== Understanding the Builder
+
+Builders act as formatters. A Builder incapsulates all the logic behind the tab creation including the code required to toggle tabs status.
+
+When the <tt>tabs_tag</tt> helper is called, it creates a new <tt>Tabs</tt> instance with selected Builder.
+If you don't provide a custom builder, then <tt>Tabs::TabsBuilder</tt> is used by default.
+
+=== Creating a custom Builder
+
+All builders must extend the base <tt>Tabs::Builder</tt> class and implement at least the <tt>tab_for</tt> method.
+Additional overridable methods include:
+
+<tt>open_tabs</tt>:: the method called before the tab set
+<tt>close_tabs</tt>:: the method called after the tab set
+<tt>tab_for</tt>:: the method called to create a single tab item
+
+The following example creates a custom tab builder called MainTabBuilder.
+
+  class MenuTabBuilder < TabsOnRails::Tabs::Builder
+    def tab_for(tab, name, options, item_options = {})
+      item_options[:class] = (current_tab?(tab) ? 'active' : '')
+      @context.content_tag(:li, item_options) do
+        @context.link_to(name, options)
+      end
+    end
+  end
+
+=== Using a custom Builder
+
+In your view, simply pass the builder class to the <tt>tabs_tag</tt> method.
+
+  <% tabs_tag(MenuTabBuilder) do |tab| %>
+    <%= tab.home, 'Homepage', root_path %>
+    <%= tab.dashboard, 'Dashboard', dashboard_path %>
+    <%= tab.account, 'Account', account_path, :style => 'float: right;' %>
+  <% end %>
+  
+This is the final result.
+
+  <ul>
+    <li class=""><a href="/">Homepage</a></li>
+    <li class="active"><a href="/dashboard">Dashboard</a></li>
+    <li class="" style="float: right;"><a href="/account">Account</a></li>
+  </ul>
+
+== Documentation
+
+The library is still under development and this README file might not be contain the latest changes.
+For the full documentation, development roadmap and more information please visit the {project page}[http://code.simonecarletti.com/wiki/tabsonrails].
+
+
+== Credits
+
+Author:: {Simone Carletti}[http://www.simonecarletti.com/] <weppos@weppos.net>
+
+
+== Resources
+
+* {Homepage}[http://code.simonecarletti.com/tabsonrails]
+* {GitHub}[http://github.com/weppos/tabs_on_rails/]
+
+
+== License
+
+Copyright (c) 2009 Simone Carletti, TabsOnRails is released under the MIT license.

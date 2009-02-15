@@ -1,5 +1,7 @@
 = Changelog
 
+* ADDED: The README file is definitely more useful now, filled up with some basic documentation.
+
 == Release 0.1.0
 
 * Initial version
