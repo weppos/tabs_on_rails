@@ -44,7 +44,7 @@ begin
   require 'code_statistics'
   desc "Show library's code statistics"
   task :stats do
-    CodeStatistics.new(["WWW::Delicious", "lib"],
+    CodeStatistics.new(["TabsOnRails", "lib"],
                        ["Tests", "test"]).to_s
   end
 rescue LoadError
