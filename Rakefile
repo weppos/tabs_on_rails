@@ -28,7 +28,7 @@ Echoe.new(PKG_NAME, PKG_VERSION) do |p|
     TabsOnRails is a simple Rails plugin for creating and managing Tabs. \
     It provides helpers for creating tabs with a flexible interface.
   EOD
-  p.url           = "http://code.simonecarletti.com/tabs_on_rails"
+  p.url           = "http://code.simonecarletti.com/tabsonrails"
   p.project       = RUBYFORGE_PROJECT
 
   p.need_zip      = true
