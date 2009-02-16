@@ -7,6 +7,8 @@
 
 * CHANGED: Use the standard way to initialize a Rails plugin when packaged as a GEM (closes #146).
 
+* CHANGED: Removed development version warning (closes #145).
+
 
 == Release 0.1.0
 
