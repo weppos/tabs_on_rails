@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Tabs_on_rails", "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.1}
-  s.summary = %q{Simple Rails plugin for creating and managing Tabs.}
+  s.summary = %q{A simple Ruby on Rails plugin for creating and managing Tabs.}
   s.test_files = ["test/builder_test.rb", "test/controller_mixin_helpers_test.rb", "test/controller_mixin_test.rb", "test/tabs_builder_test.rb", "test/tabs_on_rails_test.rb", "test/test_helper.rb"]
 
   if s.respond_to? :specification_version then

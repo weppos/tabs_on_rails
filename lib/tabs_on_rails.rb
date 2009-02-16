@@ -1,7 +1,7 @@
 # 
 # = Tabs on Rails
 #
-# Simple Rails plugin for creating and managing Tabs.
+# A simple Ruby on Rails plugin for creating and managing Tabs.
 # 
 #
 # Category::    Rails

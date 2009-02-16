@@ -8,7 +8,7 @@ require 'tabs_on_rails'
 
 PKG_NAME    = ENV['PKG_NAME']    || TabsOnRails::GEM
 PKG_VERSION = ENV['PKG_VERSION'] || TabsOnRails::VERSION
-PKG_SUMMARY = "Simple Rails plugin for creating and managing Tabs."
+PKG_SUMMARY = "A simple Ruby on Rails plugin for creating and managing Tabs."
 PKG_FILES   = FileList.new("{lib,rails,tasks,test}/**/*") do |files|
   files.include %w(*.{rdoc,rb})
   files.include %w(Rakefile)
