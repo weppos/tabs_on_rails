@@ -25,7 +25,7 @@ Echoe.new(PKG_NAME, PKG_VERSION) do |p|
   p.email         = "weppos@weppos.net"
   p.summary       = PKG_SUMMARY
   p.description   = <<-EOD
-    TabsOnRails is a simple Rails plugin for creating and managing Tabs. \
+    TabsOnRails is a simple Ruby on Rails plugin for creating and managing Tabs. \
     It provides helpers for creating tabs with a flexible interface.
   EOD
   p.url           = "http://code.simonecarletti.com/tabsonrails"
