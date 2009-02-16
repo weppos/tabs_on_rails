@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simone Carletti"]
-  s.date = %q{2009-02-15}
+  s.date = %q{2009-02-16}
   s.description = %q{TabsOnRails is a simple Rails plugin for creating and managing Tabs.     It provides helpers for creating tabs with a flexible interface.}
   s.email = %q{weppos@weppos.net}
   s.extra_rdoc_files = ["CHANGELOG.rdoc", "lib/tabs_on_rails/controller_mixin.rb", "lib/tabs_on_rails/tabs.rb", "lib/tabs_on_rails/version.rb", "lib/tabs_on_rails.rb", "LICENSE.rdoc", "README.rdoc"]
-  s.files = ["CHANGELOG.rdoc", "init.rb", "install.rb", "lib/tabs_on_rails/controller_mixin.rb", "lib/tabs_on_rails/tabs.rb", "lib/tabs_on_rails/version.rb", "lib/tabs_on_rails.rb", "LICENSE.rdoc", "Manifest", "Rakefile", "README.rdoc", "tasks/tabs_on_rails_tasks.rake", "test/builder_test.rb", "test/controller_mixin_helpers_test.rb", "test/controller_mixin_test.rb", "test/fixtures/mixin/standard.html.erb", "test/tabs_builder_test.rb", "test/tabs_on_rails_test.rb", "test/test_helper.rb", "uninstall.rb", "tabs_on_rails.gemspec"]
+  s.files = ["CHANGELOG.rdoc", "init.rb", "install.rb", "lib/tabs_on_rails/controller_mixin.rb", "lib/tabs_on_rails/tabs.rb", "lib/tabs_on_rails/version.rb", "lib/tabs_on_rails.rb", "LICENSE.rdoc", "Manifest", "rails/init.rb", "Rakefile", "README.rdoc", "tasks/tabs_on_rails_tasks.rake", "test/builder_test.rb", "test/controller_mixin_helpers_test.rb", "test/controller_mixin_test.rb", "test/fixtures/mixin/standard.html.erb", "test/tabs_builder_test.rb", "test/tabs_on_rails_test.rb", "test/test_helper.rb", "uninstall.rb", "tabs_on_rails.gemspec"]
   s.has_rdoc = true
   s.homepage = %q{http://code.simonecarletti.com/tabs_on_rails}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Tabs_on_rails", "--main", "README.rdoc"]

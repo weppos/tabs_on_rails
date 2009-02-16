@@ -1,6 +1,12 @@
 = Changelog
 
+
+== master
+
 * ADDED: The README file is definitely more useful now, filled up with some basic documentation.
+
+* CHANGED: Use the standard way to initialize a Rails plugin when packaged as a GEM (closes #146).
+
 
 == Release 0.1.0
 
