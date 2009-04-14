@@ -32,10 +32,10 @@ This is the preferred way if you want to live on the edge and install a developm
 
 In your template use the <tt>tabs_tag</tt> helper to create your tab.
 
-  <% tabs_tab do |tab| %>
-    <%= tab.home, 'Homepage', root_path %>
-    <%= tab.dashboard, 'Dashboard', dashboard_path %>
-    <%= tab.account, 'Account', account_path %>
+  <% tabs_tag do |tab| %>
+    <%= tab.home      'Homepage', root_path %>
+    <%= tab.dashboard 'Dashboard', dashboard_path %>
+    <%= tab.account   'Account', account_path %>
   <% end %>
 
 The example above produces the following HTML output.
@@ -125,9 +125,9 @@ The following example creates a custom tab builder called MainTabBuilder.
 In your view, simply pass the builder class to the <tt>tabs_tag</tt> method.
 
   <% tabs_tag(MenuTabBuilder) do |tab| %>
-    <%= tab.home, 'Homepage', root_path %>
-    <%= tab.dashboard, 'Dashboard', dashboard_path %>
-    <%= tab.account, 'Account', account_path, :style => 'float: right;' %>
+    <%= tab.home        'Homepage', root_path %>
+    <%= tab.dashboard,  'Dashboard', dashboard_path %>
+    <%= tab.account     'Account', account_path, :style => 'float: right;' %>
   <% end %>
   
 This is the final result.
