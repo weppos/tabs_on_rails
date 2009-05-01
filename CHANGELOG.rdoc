@@ -1,6 +1,7 @@
 = Changelog
 
-== master
+
+== Release 0.3.0
 
 * ADDED: Support for namespaces in order to manage concurrent tab menus (closes #144).
 

@@ -18,7 +18,7 @@ module TabsOnRails
 
   module Version
     MAJOR = 0
-    MINOR = 2
+    MINOR = 3
     TINY  = 0
 
     STRING = [MAJOR, MINOR, TINY].join('.')
