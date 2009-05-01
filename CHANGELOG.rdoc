@@ -2,9 +2,15 @@
 
 == master
 
+* ADDED: Support for namespaces in order to manage concurrent tab menus (closes #144).
+
 * FIXED: `Uninitialized constant RAILS_DEFAULT_LOGGER (NameError)' error message when running tests outside a Rails environment.
 
 * FIXED: Tests complains when Rails 2.3.2 is installed. This library is 100% compatible with Rails 2.3.2 but for now let's force tests to use Rails 2.2.2.
+
+* CHANGED: current_tab= controller instance/class methods are now deprecated. Use set_tab instead.
+
+* CHANGED: Calling tabs_tag with a custom builder as first parameter is now deprecated. Use :builder option instead.
 
 
 == Release 0.2.0

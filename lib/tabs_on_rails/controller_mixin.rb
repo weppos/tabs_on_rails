@@ -20,36 +20,120 @@ module TabsOnRails
     
     def self.included(base)
       base.extend         ClassMethods
-      base.send :helper,  HelperMethods
       base.class_eval do
-        attr_accessor :current_tab
+        include       InstanceMethods
+        helper        HelperMethods
         helper_method :current_tab
       end
     end
 
     module ClassMethods
 
-      # Sets +name+ as +current_tab+.
-      # 
+      # Sets the value for current tab to given name.
+      #
+      #   set_tab :foo
+      #
+      # If you need to manage multiple tabs, then you can pass an optional namespace.
+      #
+      #   set_tab :foo, :namespace
+      #
+      # The <tt>set_tab</tt> method understands all options you are used to pass to a Rails controller filter.
+      # In fact, behind the scenes this method uses a <tt>before_filter</tt>
+      # to store the tab in the <tt>@tab_stack</tt> variable.
+      # For example, you can set the tab only for a restricted group of actions in the same controller
+      # using the <tt>:only</tt> and <tt>:except</tt> options.
+      #
       # ==== Examples
       # 
-      #   tab :foo
-      #   tab :foo, :except => :new
-      #   tab :foo, :only => [ :index, :show ]
-      # 
-      def current_tab(name, options = {})
+      #   set_tab :foo
+      #   set_tab :foo, :except => :new
+      #   set_tab :foo, :only => [ :index, :show ]
+      #
+      #   set_tab :foo, :namespace
+      #   set_tab :foo, :namespace, :only => [ :index, :show ]
+      #
+      def set_tab(*args)
+        options = args.extract_options!
+        name, namespace = args
+        
         before_filter(options) do |controller|
-          controller.current_tab = name
+          controller.set_tab(name, namespace)
         end
+      end
+
+      # This method is deprecated and exists only for compatibility with version 0.2.
+      # Please use <tt>set_tab</tt> method instead.
+      def current_tab(*args)
+        ActiveSupport::Deprecation.warn("Method current_tab is deprecated and will be removed in a future version. Please use set_tab instead.", caller)
+        set_tab(*args)
+      end
+
+    end
+
+    module InstanceMethods
+      
+      # This method is deprecated and exists only for compatibility with version 0.2.
+      # Please use <tt>set_tab</tt> method instead of <tt>current_tab=</tt> setter method.
+      def current_tab=(name)
+        ActiveSupport::Deprecation.warn("Method current_tab= is deprecated and will be removed in a future version. Please use set_tab instead.", caller)
+        set_tab(name)
+      end  
+
+      # Sets the value for current tab to given name.
+      # If you need to manage multiple tabs, then you can pass an optional namespace.
+      #
+      # ==== Examples
+      #
+      #   set_tab :homepage
+      #   set_tab :dashboard, :menu
+      #
+      def set_tab(name, namespace = nil)
+        tab_stack[namespace || :default] = name
+      end
+
+      # Returns the value for current tab in the default namespace,
+      # or nil if no tab has been set before.
+      # You can pass <tt>namespace</tt> get the value of current tab for a different namescope.
+      #
+      # ==== Examples
+      #
+      #   current_tab           # => nil
+      #   current_tab :menu     # => nil
+      #
+      #   set_tab :homepage
+      #   set_tab :dashboard, :menu
+      #
+      #   current_tab           # => :homepage
+      #   current_tab :menu     # => :dashboard
+      #
+      def current_tab(namespace = nil)
+        tab_stack[namespace || :default]
+      end
+
+      # Returns whether the current tab in <tt>namespace</tt> matches <tt>name</tt>.
+      def current_tab?(name, namespace = nil)
+        current_tab(namespace).to_s == name.to_s
+      end
+
+      # Initializes and/or returns the tab stack.
+      # You won't probably need to use this method directly
+      # unless you are trying to hack the plugin architecture.
+      def tab_stack
+        @tab_stack ||= {}
       end
 
     end
 
     module HelperMethods
 
-      def tabs_tag(builder = nil, &block)
+      def tabs_tag(options = {}, &block)
         raise LocalJumpError, "no block given" unless block_given?
-        tabs  = Tabs.new(self, builder)
+
+        unless options.is_a?(Hash)
+          ActiveSupport::Deprecation.warn('tabs_tag takes a Hash of options, no longer a builder class. Use :builder => BuilderClass.', caller)
+          options = { :builder => options }
+        end
+        tabs  = Tabs.new(self, { :namespace => :default }.merge(options))
 
         concat(tabs.open_tabs.to_s)
         yield  tabs

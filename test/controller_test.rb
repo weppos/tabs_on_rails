@@ -1,0 +1,76 @@
+require 'test_helper'
+
+class MixinController < ActionController::Base
+  def self.controller_name; "mixin"; end
+  def self.controller_path; "mixin"; end
+
+  layout false
+  
+  set_tab :dashboard
+  set_tab :welcome,   :only => %w(action_welcome)
+  set_tab :dashboard, :only => %w(action_namespace)
+  set_tab :homepage,  :namespace, :only => %w(action_namespace)
+
+  # Deprecated.
+  current_tab :deprecated,   :only => %w(action_current_tab)
+  
+
+  def method_missing(method, *args)
+    if method =~ /^action_(.*)/
+      render :action => (params[:template] || 'standard')
+    end
+  end
+
+  def rescue_action(e) raise end
+end
+
+MixinController.view_paths = [ File.dirname(__FILE__) + "/fixtures/" ]
+
+
+class ControllerMixinTest < ActiveSupport::TestCase
+  
+  def setup
+    @controller = MixinController.new
+    @request    = ActionController::TestRequest.new
+    @response   = ActionController::TestResponse.new
+  end
+  
+  def test_set_tab
+    get :action_dashboard
+    assert_equal(:dashboard, @controller.current_tab)
+    assert_equal(:dashboard, @controller.current_tab(:default))
+    assert_equal(%Q{<ul>
+  <li><span>Dashboard</span></li>
+  <li><a href="/w">Welcome</a></li>
+</ul>}, @response.body)
+  end
+  
+  def test_set_tab_with_only_option
+    get :action_welcome
+    assert_equal(:welcome, @controller.current_tab)
+    assert_equal(:welcome, @controller.current_tab(:default))
+    assert_equal(%Q{<ul>
+  <li><a href="/d">Dashboard</a></li>
+  <li><span>Welcome</span></li>
+</ul>}, @response.body)
+  end
+
+  def test_set_tab_with_namespace
+    get :action_namespace
+    assert_equal(:dashboard, @controller.current_tab)
+    assert_equal(:dashboard, @controller.current_tab(:default))
+    assert_equal(:homepage, @controller.current_tab(:namespace))
+    assert_equal(%Q{<ul>
+  <li><span>Dashboard</span></li>
+  <li><a href="/w">Welcome</a></li>
+</ul>}, @response.body)
+  end
+
+  # Deprecated
+  def test_deprecate_current_tab
+    get :action_current_tab
+    assert_equal(:deprecated, @controller.current_tab)
+    assert_equal(:deprecated, @controller.current_tab(:default))
+  end
+
+end

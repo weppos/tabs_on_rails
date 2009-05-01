@@ -50,10 +50,10 @@ The usage is similar to the Rails route file.
 You create named tabs with the syntax <tt>tab.name_of_tab</tt>. 
 
 The name you use creating a tab is the same you're going to refer to in your controller
-when you want to mark a tab as the current_tab.
+when you want to mark a tab as the current tab.
 
   class DashboardController < ApplicationController
-    current_tab :dashboard
+    set_tab :dashboard
   end
 
 Now, if the action belongs to DashboardController, the template will automatically render the following HTML code.
@@ -64,27 +64,130 @@ Now, if the action belongs to DashboardController, the template will automatical
     <li><a href="/account">Account</a></li>
   </ul>
 
+Use the <tt>current_tab</tt> helper method if you need to access the value of current tab in your controller or template.
 
-== Restricting current_tab scope
+  class DashboardController < ApplicationController
+    set_tab :dashboard
+  end
 
-The <tt>current_tab</tt> method understands all options you are used to pass to a Rails controller filter.
-In fact, behind the scenes this method uses a <tt>before_filter</tt> to set a special <tt>@current_tab</tt> variable.
+  # In your view
+  <p>The name of current tab is <%= current_tab %>.</p>
+
+
+== Restricting set_tab scope
+
+The <tt>set_tab</tt> method understands all options you are used to pass to a Rails controller filter.
+In fact, behind the scenes this method uses a <tt>before_filter</tt> to store the tab in the <tt>@tab_stack</tt> variable.
 
 Taking advantage of Rails filter options, you can restrict a tab to a selected group of actions in the same controller.
 
   class PostsController < ApplicationController
-    current_tab :admin
-    current_tab :posts, :only => [ :index, :show ]
+    set_tab :admin
+    set_tab :posts, :only => [ :index, :show ]
   end
   
   class ApplicationController < ActionController::Base
-    current_tab :admin, :if => :admin_controller?
+    set_tab :admin, :if => :admin_controller?
     
     def admin_controller?
       self.class.name =~ /^Admin(::|Controller)/
     end
   end
 
+
+== Using Namescopes to create Multiple Tabs
+
+Namescopes enable you to create and manage tabs in parallels. The best way to demonstrate namescope usage is using an example.
+
+Let's assume your application provide a first level navigation menu with 3 elements: :home, :dashboard, :projects. The relationship between your tabs and your controllers is 1:1 so you should end up with the following source code.
+
+  class HomeController
+    set_tab :home
+  end
+
+  class DashboardController
+    set_tab :dashboard
+  end
+
+  class ProjectsController
+    set_tab :projects
+    
+    def first; end
+    def second; end
+    def third; end
+  end
+
+The project controller contains 3 actions and you might want to create a second-level navigation menu. This menu should reflect the navigation status of the user in the project page.
+
+Without namespaces, you wouldn't be able to accomplish this task because you already set the current tab value to :project. You need to create a parallel navigation menu and uniquely identify it with a custom namescope.
+Let's call it :navigation.
+
+  class ProjectsController
+    set_tab :projects
+  
+    # Create an other tab navigation level
+    set_tab :first, :navigation, :only => %(first)
+    set_tab :second, :navigation, :only => %(second)
+    set_tab :third, :navigation, :only => %(third)
+  
+    def first; end
+    def second; end
+    def third; end
+  end
+
+Voilà! That's all you need to do. And you can create an unlimited number of namescope as long as you use an unique name to identify them.
+
+The default namescope is called :default. Passing :default as namescope name is the same as don't using any namescope at all. The following lines are equivalent.
+
+  # The following 
+  set_tab :projects
+  set_tab :projects, :default
+
+
+=== Rendering Tabs with Namescopes
+
+To swith namescope in your template, just pass the :namescope option to the <tt>tabs_tag</tt> helper method.
+
+  <% tabs_tag do |tab| %>
+    <%= tab.home      'Homepage', root_path %>
+    <%= tab.dashboard 'Dashboard', dashboard_path %>
+    <%= tab.projects  'Projects', projects_path %>
+  <% end %>
+
+  <% tabs_tag :namescope => :navigation do |tab| %>
+    <%= tab.first   'First', first_project_path %>
+    <%= tab.second  'Second', second_project_path %>
+    <%= tab.third   'Account', third_project_path %>
+  <% end %>
+
+=== Namescope scope
+
+As a bonus feature, the namescope name does need to be unique within current request scope, not necessarily across the entire application. 
+
+Back to the previous example, you can reuse the same namescope in the other controllers. In this way, you can reuse your templates as well.
+
+  class HomeController
+    set_tab :home
+  end
+
+  class DashboardController
+    set_tab :dashboard
+
+    set_tab :index,  :navigation, :only => %(index)
+    set_tab :common, :navigation, :only => %(foo bar)
+    
+    # ...
+  end
+
+  class ProjectsController
+    set_tab :projects
+  
+    set_tab :first,  :navigation, :only => %(first)
+    set_tab :second, :navigation, :only => %(second)
+    set_tab :third,  :navigation, :only => %(third)
+    
+    # ...
+  end
 
 == Tab Builders
 
@@ -124,7 +227,7 @@ The following example creates a custom tab builder called MainTabBuilder.
 
 In your view, simply pass the builder class to the <tt>tabs_tag</tt> method.
 
-  <% tabs_tag(MenuTabBuilder) do |tab| %>
+  <% tabs_tag(:builder => MenuTabBuilder) do |tab| %>
     <%= tab.home        'Homepage', root_path %>
     <%= tab.dashboard,  'Dashboard', dashboard_path %>
     <%= tab.account     'Account', account_path, :style => 'float: right;' %>

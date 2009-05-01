@@ -31,8 +31,11 @@ module TabsOnRails
     class Builder
       
       # Initializes a new builder with +context+.
-      def initialize(context)
-        @context = context
+      #
+      # Note. You should not overwrite this method to prevent incompatibility with future versions.
+      def initialize(context, options = {})
+        @context   = context
+        @namespace = options.delete(:namespace) || :default
       end
       
       # Returns true if +tab+ is the +current_tab+.
@@ -49,8 +52,9 @@ module TabsOnRails
       #   current_tab? 'bar'  # => false
       #
       def current_tab?(tab)
-        tab.to_s == @context.current_tab.to_s
+        tab.to_s == @context.current_tab(@namespace).to_s
       end
+
       
       # Creates and returns a tab with given +args+.
       # 
@@ -111,9 +115,10 @@ module TabsOnRails
       
     end
     
-    def initialize(context, builder = nil, &block)
+
+    def initialize(context, options = {}, &block)
       @context = context
-      @builder = (builder || TabsBuilder).new(@context)
+      @builder = (options.delete(:builder) || TabsBuilder).new(@context, options)
     end
     
     %w(open_tabs close_tabs).each do |method|
