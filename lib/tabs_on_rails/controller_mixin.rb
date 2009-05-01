@@ -93,7 +93,7 @@ module TabsOnRails
 
       # Returns the value for current tab in the default namespace,
       # or nil if no tab has been set before.
-      # You can pass <tt>namespace</tt> get the value of current tab for a different namescope.
+      # You can pass <tt>namespace</tt> to get the value of current tab for a different namespace.
       #
       # ==== Examples
       #

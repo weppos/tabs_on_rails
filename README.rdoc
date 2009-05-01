@@ -83,7 +83,7 @@ Taking advantage of Rails filter options, you can restrict a tab to a selected g
 
   class PostsController < ApplicationController
     set_tab :admin
-    set_tab :posts, :only => [ :index, :show ]
+    set_tab :posts, :only => %w(index show)
   end
   
   class ApplicationController < ActionController::Base
@@ -95,11 +95,11 @@ Taking advantage of Rails filter options, you can restrict a tab to a selected g
   end
 
 
-== Using Namescopes to create Multiple Tabs
+== Using Namespaces to create Multiple Tabs
 
-Namescopes enable you to create and manage tabs in parallels. The best way to demonstrate namescope usage is using an example.
+Namespaces enable you to create and manage tabs in parallels. The best way to demonstrate namespace usage is with an example.
 
-Let's assume your application provide a first level navigation menu with 3 elements: :home, :dashboard, :projects. The relationship between your tabs and your controllers is 1:1 so you should end up with the following source code.
+Let's assume your application provides a first level navigation menu with 3 elements: :home, :dashboard, :projects. The relationship between your tabs and your controllers is 1:1 so you should end up with the following source code.
 
   class HomeController
     set_tab :home
@@ -119,34 +119,33 @@ Let's assume your application provide a first level navigation menu with 3 eleme
 
 The project controller contains 3 actions and you might want to create a second-level navigation menu. This menu should reflect the navigation status of the user in the project page.
 
-Without namespaces, you wouldn't be able to accomplish this task because you already set the current tab value to :project. You need to create a parallel navigation menu and uniquely identify it with a custom namescope.
+Without namespaces, you wouldn't be able to accomplish this task because you already set the current tab value to :projects. You need to create a parallel navigation menu and uniquely identify it with a custom namespace.
 Let's call it :navigation.
 
   class ProjectsController
     set_tab :projects
   
     # Create an other tab navigation level
-    set_tab :first, :navigation, :only => %(first)
-    set_tab :second, :navigation, :only => %(second)
-    set_tab :third, :navigation, :only => %(third)
+    set_tab :first, :navigation, :only => %w(first)
+    set_tab :second, :navigation, :only => %w(second)
+    set_tab :third, :navigation, :only => %w(third)
   
     def first; end
     def second; end
     def third; end
   end
 
-Voilà! That's all you need to do. And you can create an unlimited number of namescope as long as you use an unique name to identify them.
+Voilà! That's all you need to do. And you can create an unlimited number of namespaces as long as you use an unique name to identify them.
 
-The default namescope is called :default. Passing :default as namescope name is the same as don't using any namescope at all. The following lines are equivalent.
+The default namespace is called :default. Passing :default as name is the same as don't using any namespace at all. The following lines are equivalent.
 
-  # The following 
   set_tab :projects
   set_tab :projects, :default
 
 
-=== Rendering Tabs with Namescopes
+=== Rendering Tabs with Namespaces
 
-To swith namescope in your template, just pass the :namescope option to the <tt>tabs_tag</tt> helper method.
+To switch namespace in your template, just pass the :namespace option to the <tt>tabs_tag</tt> helper method.
 
   <% tabs_tag do |tab| %>
     <%= tab.home      'Homepage', root_path %>
@@ -154,17 +153,17 @@ To swith namescope in your template, just pass the :namescope option to the <tt>
     <%= tab.projects  'Projects', projects_path %>
   <% end %>
 
-  <% tabs_tag :namescope => :navigation do |tab| %>
+  <% tabs_tag :namespace => :navigation do |tab| %>
     <%= tab.first   'First', first_project_path %>
     <%= tab.second  'Second', second_project_path %>
     <%= tab.third   'Account', third_project_path %>
   <% end %>
 
-=== Namescope scope
+=== Namespace scope
 
-As a bonus feature, the namescope name does need to be unique within current request scope, not necessarily across the entire application. 
+As a bonus feature, the namespace name does need to be unique within current request scope, not necessarily across the entire application.
 
-Back to the previous example, you can reuse the same namescope in the other controllers. In this way, you can reuse your templates as well.
+Back to the previous example, you can reuse the same namespace in the other controllers. In this way, you can reuse your templates as well.
 
   class HomeController
     set_tab :home
@@ -173,8 +172,8 @@ Back to the previous example, you can reuse the same namescope in the other cont
   class DashboardController
     set_tab :dashboard
 
-    set_tab :index,  :navigation, :only => %(index)
-    set_tab :common, :navigation, :only => %(foo bar)
+    set_tab :index,  :navigation, :only => %w(index)
+    set_tab :common, :navigation, :only => %w(foo bar)
     
     # ...
   end
@@ -182,9 +181,9 @@ Back to the previous example, you can reuse the same namescope in the other cont
   class ProjectsController
     set_tab :projects
   
-    set_tab :first,  :navigation, :only => %(first)
-    set_tab :second, :navigation, :only => %(second)
-    set_tab :third,  :navigation, :only => %(third)
+    set_tab :first,  :navigation, :only => %w(first)
+    set_tab :second, :navigation, :only => %w(second)
+    set_tab :third,  :navigation, :only => %w(third)
     
     # ...
   end
