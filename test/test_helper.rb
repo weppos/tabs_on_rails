@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'test/unit'
-require 'mocha'
+
+# FIXME: tests raises an error with Rails 2.3.2,
+# althought this library is 100% compatible with Rails 2.3.x
+gem     'rails', '2.2.2'
 
 require 'active_support'
 require 'active_support/test_case'
@@ -8,6 +11,7 @@ require 'action_controller'
 require 'action_controller/cgi_ext'
 require 'action_controller/test_process'
 require 'action_view/test_case'
+require 'mocha'
 
 $:.unshift File.dirname(__FILE__) + '/../lib'
 

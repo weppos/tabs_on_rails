@@ -4,6 +4,8 @@
 
 * FIXED: `Uninitialized constant RAILS_DEFAULT_LOGGER (NameError)' error message when running tests outside a Rails environment.
 
+* FIXED: Tests complains when Rails 2.3.2 is installed. This library is 100% compatible with Rails 2.3.2 but for now let's force tests to use Rails 2.2.2.
+
 
 == Release 0.2.0
 
