@@ -1,5 +1,9 @@
 = Changelog
 
+== master
+
+* FIXED: `Uninitialized constant RAILS_DEFAULT_LOGGER (NameError)' error message when running tests outside a Rails environment.
+
 
 == Release 0.2.0
 
