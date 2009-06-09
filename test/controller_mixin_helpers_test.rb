@@ -13,6 +13,7 @@ class MockBuilder < TabsOnRails::Tabs::Builder
 
   def tab_for(tab, name, *args)
   end
+
 end
 
 class NilBoundariesBuilder < TabsOnRails::Tabs::Builder
@@ -35,10 +36,10 @@ end
 
 
 class ControllerMixinHelpersTest < ActionView::TestCase
+  tests TabsOnRails::ControllerMixin::HelperMethods
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::UrlHelper
-  include TabsOnRails::ControllerMixin::HelperMethods
-  
+
 
   def test_tabs_tag_should_raise_local_jump_error_without_block
     assert_raise(LocalJumpError) { tabs_tag }

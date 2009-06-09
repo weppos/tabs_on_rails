@@ -1,11 +1,9 @@
 require 'test_helper'
 
-class MixinController < ActionController::Base
-end
-
-
 class ControllerMixinTest < ActiveSupport::TestCase
-  
+
+  class MixinController < ActionController::Base; end
+
   def setup
     @controller = MixinController.new
     @request    = ActionController::TestRequest.new

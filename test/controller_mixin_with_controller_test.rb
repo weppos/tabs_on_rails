@@ -1,40 +1,38 @@
 require 'test_helper'
 
-class MixinController < ActionController::Base
-  def self.controller_name; "mixin"; end
-  def self.controller_path; "mixin"; end
+class ControllerMixinWithControllerTest < ActiveSupport::TestCase
 
-  layout false
-  
-  set_tab :dashboard
-  set_tab :welcome,   :only => %w(action_welcome)
-  set_tab :dashboard, :only => %w(action_namespace)
-  set_tab :homepage,  :namespace, :only => %w(action_namespace)
+  class MixinController < ActionController::Base
+    def self.controller_name; "mixin"; end
+    def self.controller_path; "mixin"; end
 
-  # Deprecated.
-  current_tab :deprecated,   :only => %w(action_current_tab)
-  
+    layout false
 
-  def method_missing(method, *args)
-    if method =~ /^action_(.*)/
-      render :action => (params[:template] || 'standard')
+    set_tab :dashboard
+    set_tab :welcome,   :only => %w(action_welcome)
+    set_tab :dashboard, :only => %w(action_namespace)
+    set_tab :homepage,  :namespace, :only => %w(action_namespace)
+    # Deprecated.
+    current_tab :deprecated,   :only => %w(action_current_tab)
+
+    def method_missing(method, *args)
+      if method =~ /^action_(.*)/
+        render :action => (params[:template] || 'standard')
+      end
     end
+
+    def rescue_action(e) raise end
   end
 
-  def rescue_action(e) raise end
-end
+  MixinController.view_paths = [ File.dirname(__FILE__) + "/fixtures/" ]
 
-MixinController.view_paths = [ File.dirname(__FILE__) + "/fixtures/" ]
-
-
-class ControllerMixinTest < ActiveSupport::TestCase
-  
   def setup
     @controller = MixinController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end
-  
+
+
   def test_set_tab
     get :action_dashboard
     assert_equal(:dashboard, @controller.current_tab)
@@ -44,7 +42,7 @@ class ControllerMixinTest < ActiveSupport::TestCase
   <li><a href="/w">Welcome</a></li>
 </ul>}, @response.body)
   end
-  
+
   def test_set_tab_with_only_option
     get :action_welcome
     assert_equal(:welcome, @controller.current_tab)

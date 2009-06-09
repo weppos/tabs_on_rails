@@ -1,24 +1,23 @@
 require 'test_helper'
 
-class TabsBuilderTemplate
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::UrlHelper
-  
-  def current_tab(namespace)
-    case namespace
-      when nil, :default
-        :dashboard
-      when :foospace
-        :footab
-      else
-        :elsetab
+class TabsBuilderTest < ActiveSupport::TestCase
+
+  class TabsBuilderTemplate
+    include ActionView::Helpers::TagHelper
+    include ActionView::Helpers::UrlHelper
+
+    def current_tab(namespace)
+      case namespace
+        when nil, :default
+          :dashboard
+        when :foospace
+          :footab
+        else
+          :elsetab
+      end
     end
   end
-end
 
-
-class TabsBuilderTest < ActiveSupport::TestCase
-  
   def setup
     @template = TabsBuilderTemplate.new
     @builder  = TabsOnRails::Tabs::TabsBuilder.new(@template)
