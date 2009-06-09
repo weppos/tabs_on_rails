@@ -23,7 +23,7 @@ module TabsOnRails
       base.class_eval do
         include       InstanceMethods
         helper        HelperMethods
-        helper_method :current_tab
+        helper_method :current_tab, :current_tab?
       end
     end
 
