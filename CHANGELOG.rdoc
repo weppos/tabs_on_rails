@@ -7,6 +7,8 @@
 
 * FIXED: :current_tab? not available as helper method (closes #229).
 
+* FIXED: GitHub now requires the Manifest file to be included in the repos.
+
 
 == Release 0.3.0
 

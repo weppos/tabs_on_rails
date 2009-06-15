@@ -15,7 +15,7 @@ tasks/tabs_on_rails_tasks.rake
 test/builder_test.rb
 test/controller_mixin_helpers_test.rb
 test/controller_mixin_test.rb
-test/controller_test.rb
+test/controller_mixin_with_controller_test.rb
 test/fixtures/mixin/standard.html.erb
 test/tabs_builder_test.rb
 test/tabs_on_rails_test.rb
