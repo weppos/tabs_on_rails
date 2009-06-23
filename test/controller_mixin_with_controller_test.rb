@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ControllerMixinWithControllerTest < ActiveSupport::TestCase
-
+  include ControllerTestHelpers
+  
   class MixinController < ActionController::Base
     def self.controller_name; "mixin"; end
     def self.controller_path; "mixin"; end
@@ -28,6 +29,7 @@ class ControllerMixinWithControllerTest < ActiveSupport::TestCase
 
   def setup
     @controller = MixinController.new
+    @controller_proxy = ControllerProxy.new(@controller)
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end
@@ -35,8 +37,8 @@ class ControllerMixinWithControllerTest < ActiveSupport::TestCase
 
   def test_set_tab
     get :action_dashboard
-    assert_equal(:dashboard, @controller.current_tab)
-    assert_equal(:dashboard, @controller.current_tab(:default))
+    assert_equal(:dashboard, controller.current_tab)
+    assert_equal(:dashboard, controller.current_tab(:default))
     assert_equal(%Q{<ul>
   <li><span>Dashboard</span></li>
   <li><a href="/w">Welcome</a></li>
@@ -45,8 +47,8 @@ class ControllerMixinWithControllerTest < ActiveSupport::TestCase
 
   def test_set_tab_with_only_option
     get :action_welcome
-    assert_equal(:welcome, @controller.current_tab)
-    assert_equal(:welcome, @controller.current_tab(:default))
+    assert_equal(:welcome, controller.current_tab)
+    assert_equal(:welcome, controller.current_tab(:default))
     assert_equal(%Q{<ul>
   <li><a href="/d">Dashboard</a></li>
   <li><span>Welcome</span></li>
@@ -55,20 +57,35 @@ class ControllerMixinWithControllerTest < ActiveSupport::TestCase
 
   def test_set_tab_with_namespace
     get :action_namespace
-    assert_equal(:dashboard, @controller.current_tab)
-    assert_equal(:dashboard, @controller.current_tab(:default))
-    assert_equal(:homepage, @controller.current_tab(:namespace))
+    assert_equal(:dashboard, controller.current_tab)
+    assert_equal(:dashboard, controller.current_tab(:default))
+    assert_equal(:homepage, controller.current_tab(:namespace))
     assert_equal(%Q{<ul>
   <li><span>Dashboard</span></li>
   <li><a href="/w">Welcome</a></li>
 </ul>}, @response.body)
   end
 
+  def test_current_tab
+    get :action_dashboard
+    assert_equal :dashboard, controller.current_tab
+    assert_equal :dashboard, controller.current_tab(:default)
+  end
+
+  def test_current_tab_question
+    get :action_dashboard
+    assert  controller.current_tab?(:dashboard)
+    assert  controller.current_tab?(:dashboard, :default)
+    assert !controller.current_tab?(:foobar)
+    assert !controller.current_tab?(:foobar, :default)
+  end
+
+
   # Deprecated
   def test_deprecate_current_tab
     get :action_current_tab
-    assert_equal(:deprecated, @controller.current_tab)
-    assert_equal(:deprecated, @controller.current_tab(:default))
+    assert_equal(:deprecated, controller.current_tab)
+    assert_equal(:deprecated, controller.current_tab(:default))
   end
 
 end

@@ -57,7 +57,7 @@ module TabsOnRails
         name, namespace = args
         
         before_filter(options) do |controller|
-          controller.set_tab(name, namespace)
+          controller.instance_eval { set_tab(name, namespace) }
         end
       end
 
@@ -71,56 +71,57 @@ module TabsOnRails
     end
 
     module InstanceMethods
-      
-      # This method is deprecated and exists only for compatibility with version 0.2.
-      # Please use <tt>set_tab</tt> method instead of <tt>current_tab=</tt> setter method.
-      def current_tab=(name)
-        ActiveSupport::Deprecation.warn("Method current_tab= is deprecated and will be removed in a future version. Please use set_tab instead.", caller)
-        set_tab(name)
-      end  
+      protected
 
-      # Sets the value for current tab to given name.
-      # If you need to manage multiple tabs, then you can pass an optional namespace.
-      #
-      # ==== Examples
-      #
-      #   set_tab :homepage
-      #   set_tab :dashboard, :menu
-      #
-      def set_tab(name, namespace = nil)
-        tab_stack[namespace || :default] = name
-      end
+        # This method is deprecated and exists only for compatibility with version 0.2.
+        # Please use <tt>set_tab</tt> method instead of <tt>current_tab=</tt> setter method.
+        def current_tab=(name)
+          ActiveSupport::Deprecation.warn("Method current_tab= is deprecated and will be removed in a future version. Please use set_tab instead.", caller)
+          set_tab(name)
+        end
 
-      # Returns the value for current tab in the default namespace,
-      # or nil if no tab has been set before.
-      # You can pass <tt>namespace</tt> to get the value of current tab for a different namespace.
-      #
-      # ==== Examples
-      #
-      #   current_tab           # => nil
-      #   current_tab :menu     # => nil
-      #
-      #   set_tab :homepage
-      #   set_tab :dashboard, :menu
-      #
-      #   current_tab           # => :homepage
-      #   current_tab :menu     # => :dashboard
-      #
-      def current_tab(namespace = nil)
-        tab_stack[namespace || :default]
-      end
+        # Sets the value for current tab to given name.
+        # If you need to manage multiple tabs, then you can pass an optional namespace.
+        #
+        # ==== Examples
+        #
+        #   set_tab :homepage
+        #   set_tab :dashboard, :menu
+        #
+        def set_tab(name, namespace = nil)
+          tab_stack[namespace || :default] = name
+        end
 
-      # Returns whether the current tab in <tt>namespace</tt> matches <tt>name</tt>.
-      def current_tab?(name, namespace = nil)
-        current_tab(namespace).to_s == name.to_s
-      end
+        # Returns the value for current tab in the default namespace,
+        # or nil if no tab has been set before.
+        # You can pass <tt>namespace</tt> to get the value of current tab for a different namespace.
+        #
+        # ==== Examples
+        #
+        #   current_tab           # => nil
+        #   current_tab :menu     # => nil
+        #
+        #   set_tab :homepage
+        #   set_tab :dashboard, :menu
+        #
+        #   current_tab           # => :homepage
+        #   current_tab :menu     # => :dashboard
+        #
+        def current_tab(namespace = nil)
+          tab_stack[namespace || :default]
+        end
 
-      # Initializes and/or returns the tab stack.
-      # You won't probably need to use this method directly
-      # unless you are trying to hack the plugin architecture.
-      def tab_stack
-        @tab_stack ||= {}
-      end
+        # Returns whether the current tab in <tt>namespace</tt> matches <tt>name</tt>.
+        def current_tab?(name, namespace = nil)
+          current_tab(namespace).to_s == name.to_s
+        end
+
+        # Initializes and/or returns the tab stack.
+        # You won't probably need to use this method directly
+        # unless you are trying to hack the plugin architecture.
+        def tab_stack
+          @tab_stack ||= {}
+        end
 
     end
 

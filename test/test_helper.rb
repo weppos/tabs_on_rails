@@ -28,3 +28,25 @@ ActionController::Routing::Routes.reload rescue nil
 
 # Unit tests for Helpers are based on unit tests created and developed by Rails core team.
 # See action_pack/test/abstract_unit for more details.
+
+
+module ControllerTestHelpers
+  private
+
+    def controller
+      @controller_proxy
+    end
+
+  class ControllerProxy
+    def initialize(controller)
+      @controller = controller
+    end
+    def method_missing(method, *args)
+      @controller.instance_eval do
+        m = method(method)
+        m.call(*args)
+      end
+    end
+  end
+  
+end

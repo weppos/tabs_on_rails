@@ -9,6 +9,8 @@
 
 * FIXED: GitHub now requires the Manifest file to be included in the repos.
 
+* FIXED: Controller methods should be protected/private (closes #228).
+
 
 == Release 0.3.0
 
