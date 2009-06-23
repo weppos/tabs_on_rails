@@ -25,7 +25,7 @@ module TabsOnRails
   end
 
   VERSION         = Version::STRING
-  STATUS          = 'alpha'
+  STATUS          = 'beta'
   BUILD           = ''.match(/(\d+)/).to_a.first
 
 end

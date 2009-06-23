@@ -11,6 +11,8 @@
 
 * FIXED: Controller methods should be protected/private (closes #228).
 
+* CHANGED: Status to Beta and bumped release (closes #227).
+
 
 == Release 0.3.0
 
