@@ -1,7 +1,7 @@
 = Changelog
 
 
-== master
+== Release 0.8.0
 
 * FIXED: Invalid usage of the word namescope instead of namespace.
 
