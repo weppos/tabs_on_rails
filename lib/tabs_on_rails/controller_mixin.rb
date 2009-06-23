@@ -57,7 +57,7 @@ module TabsOnRails
         name, namespace = args
         
         before_filter(options) do |controller|
-          controller.instance_eval { set_tab(name, namespace) }
+          controller.send(:set_tab, name, namespace)
         end
       end
 
