@@ -13,8 +13,6 @@ class ControllerMixinWithControllerTest < ActiveSupport::TestCase
     set_tab :welcome,   :only => %w(action_welcome)
     set_tab :dashboard, :only => %w(action_namespace)
     set_tab :homepage,  :namespace, :only => %w(action_namespace)
-    # Deprecated.
-    current_tab :deprecated,   :only => %w(action_current_tab)
 
     def method_missing(method, *args)
       if method =~ /^action_(.*)/
@@ -78,14 +76,6 @@ class ControllerMixinWithControllerTest < ActiveSupport::TestCase
     assert  controller.current_tab?(:dashboard, :default)
     assert !controller.current_tab?(:foobar)
     assert !controller.current_tab?(:foobar, :default)
-  end
-
-
-  # Deprecated
-  def test_deprecate_current_tab
-    get :action_current_tab
-    assert_equal(:deprecated, controller.current_tab)
-    assert_equal(:deprecated, controller.current_tab(:default))
   end
 
 end

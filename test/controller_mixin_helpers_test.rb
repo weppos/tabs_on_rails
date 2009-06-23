@@ -82,12 +82,4 @@ class ControllerMixinHelpersTest < ActionView::TestCase
     assert_dom_equal('<br /><span>Single</span>', content)
   end
 
-
-  # Deprecated.
-  def test_deprecated_tabs_tag_with_builder
-    assert_deprecated do
-      tabs_tag(NilBoundariesBuilder) {}
-    end
-  end
-
 end

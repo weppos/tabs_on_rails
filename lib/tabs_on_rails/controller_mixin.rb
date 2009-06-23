@@ -61,24 +61,10 @@ module TabsOnRails
         end
       end
 
-      # This method is deprecated and exists only for compatibility with version 0.2.
-      # Please use <tt>set_tab</tt> method instead.
-      def current_tab(*args)
-        ActiveSupport::Deprecation.warn("Method current_tab is deprecated and will be removed in a future version. Please use set_tab instead.", caller)
-        set_tab(*args)
-      end
-
     end
 
     module InstanceMethods
       protected
-
-        # This method is deprecated and exists only for compatibility with version 0.2.
-        # Please use <tt>set_tab</tt> method instead of <tt>current_tab=</tt> setter method.
-        def current_tab=(name)
-          ActiveSupport::Deprecation.warn("Method current_tab= is deprecated and will be removed in a future version. Please use set_tab instead.", caller)
-          set_tab(name)
-        end
 
         # Sets the value for current tab to given name.
         # If you need to manage multiple tabs, then you can pass an optional namespace.

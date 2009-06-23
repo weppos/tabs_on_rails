@@ -13,6 +13,8 @@
 
 * CHANGED: Status to Beta and bumped release (closes #227).
 
+* REMOVED: Deprecated current_tab setter method. Use set_tab instead.
+
 
 == Release 0.3.0
 

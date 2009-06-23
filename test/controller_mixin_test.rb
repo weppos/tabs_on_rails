@@ -87,13 +87,4 @@ class ControllerMixinTest < ActiveSupport::TestCase
     assert(!controller.current_tab?(:firsttab, :custom))
   end
 
-
-  # Deprecated.
-  def test_deprecated_current_tab_setter
-    assert_deprecated do
-      controller.current_tab = :footab
-      assert_equal(:footab, controller.tab_stack[:default])
-    end
-  end
-
 end
