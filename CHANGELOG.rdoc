@@ -1,6 +1,7 @@
 = Changelog
 
-== master
+
+== Release 0.8.1
 
 * CHANGED: Controller#set_tab now uses #send instead of #instance_eval (better performance and more security)
 
