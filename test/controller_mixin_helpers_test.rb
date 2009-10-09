@@ -51,6 +51,7 @@ class ControllerMixinHelpersTest < ActionView::TestCase
   end
 
   def test_tabs_tag_with_namespace
+    MockBuilder.any_instance.expects(:checkpoint).once
     tabs_tag(:builder => MockBuilder, :namespace => :custom) do |tabs|
       builder = tabs.instance_variable_get(:'@builder')
       assert_equal(:custom, builder.instance_variable_get(:'@namespace'))

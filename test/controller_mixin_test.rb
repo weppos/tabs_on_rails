@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ControllerMixinTest < ActiveSupport::TestCase
+class ControllerMixinTest < ActionController::TestCase
   include ControllerTestHelpers
 
   class MixinController < ActionController::Base

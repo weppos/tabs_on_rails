@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TabsBuilderTest < ActiveSupport::TestCase
+class TabsBuilderTest < ActionView::TestCase
 
   class TabsBuilderTemplate
     include ActionView::Helpers::TagHelper

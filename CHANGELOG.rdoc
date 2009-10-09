@@ -4,6 +4,8 @@
 
 * CHANGED: Controller#set_tab now uses #send instead of #instance_eval (better performance and more security)
 
+* CHANGED: run test against Rails ~> 2.3.0 but ensure compatibility with Rails 2.2.x.
+
 
 == Release 0.8.0
 
