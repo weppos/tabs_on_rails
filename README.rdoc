@@ -17,16 +17,17 @@ Note. TabsOnRails doesn't work with Rails 2.1 or previous versions (see {Ticket 
 === As a Gem
 
 This is the preferred way to install TabsOnRails and the best way if you want install a stable version.
+The GEM is hosted on {Gemcutter}[http://gemcutter.org/gems/tabs_on_rails].
 
-  $ gem install weppos-tabs_on_rails --source http://gems.github.com
+  $ gem install tabs_on_rails --source http://gemcutter.org/
 
-You can specify the GEM dependency in your application environment.rb file:
+With Rails >= 2.2, you can specify the GEM dependency in your environment.rb file so that Rails will automatically check the requirement on startup.
 
   Rails::Initializer.run do |config|
     
     # other configurations
     
-    config.gem "weppos-tabs_on_rails", :lib => "tabs_on_rails", :source => "http://gems.github.com"
+    config.gem "weppos-tabs_on_rails", :lib => "tabs_on_rails", :source => "http://gemcutter.org/"
   end
 
 === As a Plugin
