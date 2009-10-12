@@ -1,7 +1,7 @@
 = Changelog
 
 
-== next maintenance
+== Release 0.8.2
 
 * CHANGED: GitHub Gem Building is Defunct. The gem is now hosted on Gemcutter (see http://github.com/blog/515-gem-building-is-defunct)
 
