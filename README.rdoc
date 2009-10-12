@@ -26,8 +26,10 @@ With Rails >= 2.2, you can specify the GEM dependency in your environment.rb fil
   Rails::Initializer.run do |config|
     
     # other configurations
+    # ...
     
-    config.gem "weppos-tabs_on_rails", :lib => "tabs_on_rails", :source => "http://gemcutter.org/"
+    config.gem "tabs_on_rails", :source => "http://gemcutter.org/"
+    
   end
 
 === As a Plugin

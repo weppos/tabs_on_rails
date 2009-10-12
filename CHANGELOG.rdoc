@@ -1,5 +1,6 @@
 = Changelog
 
+
 == next maintenance
 
 * CHANGED: GitHub Gem Building is Defunct. The gem is now hosted on Gemcutter (see http://github.com/blog/515-gem-building-is-defunct)
