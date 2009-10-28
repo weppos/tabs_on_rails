@@ -172,7 +172,7 @@ To switch namespace in your template, just pass the :namespace option to the <tt
 
 === Namespace scope
 
-As a bonus feature, the namespace name does need to be unique within current request scope, not necessarily across the entire application.
+As a bonus feature, the namespace needs to be unique within current request scope, not necessarily across the entire application.
 
 Back to the previous example, you can reuse the same namespace in the other controllers. In this way, you can reuse your templates as well.
 
@@ -208,7 +208,7 @@ The <tt>Builder</tt> is responsible for creating the tabs HTML code. This librar
 
 === Understanding the Builder
 
-Builders act as formatters. A Builder incapsulates all the logic behind the tab creation including the code required to toggle tabs status.
+Builders act as formatters. A Builder encapsulates all the logic behind the tab creation including the code required to toggle tabs status.
 
 When the <tt>tabs_tag</tt> helper is called, it creates a new <tt>Tabs</tt> instance with selected Builder.
 If you don't provide a custom builder, then <tt>Tabs::TabsBuilder</tt> is used by default.
@@ -222,7 +222,7 @@ Additional overridable methods include:
 <tt>close_tabs</tt>:: the method called after the tab set
 <tt>tab_for</tt>:: the method called to create a single tab item
 
-The following example creates a custom tab builder called MainTabBuilder.
+The following example creates a custom tab builder called <tt>MenuTabBuilder</tt>.
 
   class MenuTabBuilder < TabsOnRails::Tabs::Builder
     def tab_for(tab, name, options, item_options = {})
