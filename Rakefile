@@ -1,18 +1,13 @@
+$:.unshift(File.dirname(__FILE__) + "/lib")
+
 require 'rubygems'
 require 'rake'
 require 'echoe'
-
-$:.unshift(File.dirname(__FILE__) + "/lib")
 require 'tabs_on_rails'
 
 
 PKG_NAME    = ENV['PKG_NAME']    || TabsOnRails::GEM
 PKG_VERSION = ENV['PKG_VERSION'] || TabsOnRails::VERSION
-PKG_SUMMARY = "A simple Ruby on Rails plugin for creating and managing Tabs."
-PKG_FILES   = FileList.new("{lib,rails,tasks,test}/**/*") do |files|
-  files.include %w(*.{rdoc,rb})
-  files.include %w(Rakefile)
-end
 RUBYFORGE_PROJECT = nil
 
 if ENV['SNAPSHOT'].to_i == 1
@@ -23,20 +18,20 @@ end
 Echoe.new(PKG_NAME, PKG_VERSION) do |p|
   p.author        = "Simone Carletti"
   p.email         = "weppos@weppos.net"
-  p.summary       = PKG_SUMMARY
+  p.summary       = "A simple Ruby on Rails plugin for creating and managing Tabs."
+  p.url           = "http://code.simonecarletti.com/tabsonrails"
   p.description   = <<-EOD
     TabsOnRails is a simple Ruby on Rails plugin for creating and managing Tabs. \
     It provides helpers for creating tabs with a flexible interface.
   EOD
-  p.url           = "http://code.simonecarletti.com/tabsonrails"
   p.project       = RUBYFORGE_PROJECT
 
   p.need_zip      = true
-  p.rcov_options  = ["--main << README.rdoc -x Rakefile -x rcov"]
-  p.rdoc_pattern  = /^(lib|CHANGELOG.rdoc|README.rdoc|LICENSE.rdoc)/
 
-  p.development_dependencies += ["rake  >=0.8",
-                                 "echoe >=3.1"]
+  p.development_dependencies += ["rake  ~>0.8.7",
+                                 "echoe ~>3.2.0"]
+
+  p.rcov_options  = ["-Itest -x rcov,Rakefile"]
 end
 
 
