@@ -23,13 +23,13 @@ class NilBoundariesBuilder < TabsOnRails::Tabs::Builder
 end
 
 class NilOpenBoundaryBuilder < NilBoundariesBuilder
-  def close_tabs
+  def close_tabs(options = {})
     '<br />'
   end
 end
 
 class NilCloseBoundaryBuilder < NilBoundariesBuilder
-  def open_tabs
+  def open_tabs(options = {})
     '<br />'
   end
 end
@@ -57,8 +57,8 @@ class ControllerMixinHelpersTest < ActionView::TestCase
       assert_equal(:custom, builder.instance_variable_get(:'@namespace'))
     end
   end
-
-
+  
+  
   def test_tabs_tag_should_not_concat_open_close_tabs_when_nil
     content = tabs_tag(:builder => NilBoundariesBuilder) do |t| 
       concat t.single('Single', '#')

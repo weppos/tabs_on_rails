@@ -115,6 +115,10 @@ module TabsOnRails
 
       def tabs_tag(options = {}, &block)
         raise LocalJumpError, "no block given" unless block_given?
+        
+        options = options.dup
+        open_tabs_options  = options.delete(:open_tabs)  || {}
+        close_tabs_options = options.delete(:close_tabs) || {}
 
         unless options.is_a?(Hash)
           ActiveSupport::Deprecation.warn('tabs_tag takes a Hash of options, no longer a builder class. Use :builder => BuilderClass.', caller)
@@ -122,9 +126,9 @@ module TabsOnRails
         end
         tabs  = Tabs.new(self, { :namespace => :default }.merge(options))
 
-        concat(tabs.open_tabs.to_s)
+        concat(tabs.open_tabs(open_tabs_options).to_s)
         yield  tabs
-        concat(tabs.close_tabs.to_s)
+        concat(tabs.close_tabs(close_tabs_options).to_s)
       end
 
     end

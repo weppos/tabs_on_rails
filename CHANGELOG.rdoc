@@ -1,6 +1,11 @@
 = Changelog
 
 
+== next mini
+
+* ADDED: Ability to pass arbitrary options to open_tabs and close_tags method. Thanks to aaronchi (closes #315)
+
+
 == Release 0.8.2
 
 * CHANGED: GitHub Gem Building is Defunct. The gem is now hosted on Gemcutter (see http://github.com/blog/515-gem-building-is-defunct)

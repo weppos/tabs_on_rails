@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TabsBuilderTest < ActionView::TestCase
 
-  class TabsBuilderTemplate
+  TabsBuilderTemplate = Class.new do
     include ActionView::Helpers::TagHelper
     include ActionView::Helpers::UrlHelper
 
@@ -22,7 +22,25 @@ class TabsBuilderTest < ActionView::TestCase
     @template = TabsBuilderTemplate.new
     @builder  = TabsOnRails::Tabs::TabsBuilder.new(@template)
   end
-  
+
+
+  def test_open_tabs
+    assert_equal '<ul>', @builder.open_tabs
+  end
+
+  def test_open_tabs_with_options
+    assert_equal '<ul style="foo">', @builder.open_tabs(:style => "foo")
+  end
+
+  def test_close_tabs
+    assert_equal "</ul>", @builder.close_tabs
+  end
+
+  def test_close_tabs_with_options
+    assert_equal '</ul>', @builder.close_tabs(:foo => "bar")
+  end
+
+
   def test_should_implement_builder
     assert_equal(TabsOnRails::Tabs::Builder, TabsOnRails::Tabs::TabsBuilder.superclass)
   end

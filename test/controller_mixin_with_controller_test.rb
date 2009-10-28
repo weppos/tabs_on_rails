@@ -16,7 +16,7 @@ class ControllerMixinWithControllerTest < ActionController::TestCase
 
     def method_missing(method, *args)
       if method =~ /^action_(.*)/
-        render :action => (params[:template] || 'standard')
+        render :action => (params[:template] || 'default')
       end
     end
 
@@ -30,6 +30,23 @@ class ControllerMixinWithControllerTest < ActionController::TestCase
     @controller_proxy = ControllerProxy.new(@controller)
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
+  end
+
+
+  def test_render_default
+    get :action_dashboard
+    assert_equal(%Q{<ul>
+  <li><span>Dashboard</span></li>
+  <li><a href="/w">Welcome</a></li>
+</ul>}, @response.body)
+  end
+
+  def test_render_with_open_close_tabs
+    get :action_dashboard, :template => "with_open_close_tabs"
+    assert_equal(%Q{<ul id="tabs">
+  <li><span>Dashboard</span></li>
+  <li><a href="/w">Welcome</a></li>
+</ul>}, @response.body)
   end
 
 
@@ -63,6 +80,7 @@ class ControllerMixinWithControllerTest < ActionController::TestCase
   <li><a href="/w">Welcome</a></li>
 </ul>}, @response.body)
   end
+
 
   def test_current_tab
     get :action_dashboard

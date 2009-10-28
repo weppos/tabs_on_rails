@@ -67,11 +67,11 @@ module TabsOnRails
       end
       
       # Overwrite this method to use a custom open tag for your tabs.
-      def open_tabs
+      def open_tabs(*args)
       end
       
       # Overwrite this method to use a custom close tag for your tabs.
-      def close_tabs
+      def close_tabs(*args)
       end
       
     end
@@ -83,7 +83,7 @@ module TabsOnRails
     # It creates a new tab
     #
     class TabsBuilder < Builder
-      
+
       # Implements Builder#tab_for.
       # Returns a link_to +tab+ with +name+ and +options+ if +tab+ is not the current tab,
       # a simple tab name wrapped by a span tag otherwise.
@@ -104,13 +104,34 @@ module TabsOnRails
       end
       
       # Implements Builder#open_tabs.
-      def open_tabs
-        '<ul>'
+      # 
+      # Returns an unordered list open tag.
+      # The <tt>options</tt> is used to customize the HTML attributes of the tag.
+      #
+      #   open_tag
+      #   # => "<ul>"
+      #
+      #   open_tag :class => "centered"
+      #   # => "<ul class=\"centered\">"
+      #
+      def open_tabs(options = {})
+        @context.tag("ul", options, open = true)
       end
       
       # Implements Builder#close_tabs.
-      def close_tabs
-        '</ul>'
+      # 
+      # Returns an unordered list close tag.
+      # The <tt>options</tt> hash is ignored. It exists only for 
+      # coeherence with the parent Builder API.
+      #
+      #   close_tag
+      #   # => "</ul>"
+      #
+      #   close_tag :class => "centered"
+      #   # => "</ul>"
+      #
+      def close_tabs(options = {})
+        "</ul>"
       end
       
     end
@@ -122,8 +143,8 @@ module TabsOnRails
     end
     
     %w(open_tabs close_tabs).each do |method|
-      define_method(method) do
-        @builder.send(method)
+      define_method(method) do |*args|
+        @builder.send(method, *args)
       end
     end
     

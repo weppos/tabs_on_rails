@@ -1,26 +1,26 @@
 require 'test_helper'
 
-class BuilderTemplate
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::UrlHelper
+class BuilderTest < ActiveSupport::TestCase
+  
+  BuilderTemplate = Class.new do
+    include ActionView::Helpers::TagHelper
+    include ActionView::Helpers::UrlHelper
 
-  def current_tab(namespace)
-    case namespace
-      when nil, :default
-        :dashboard
-      when :foospace
-        :footab
-      else
-        :elsetab
+    def current_tab(namespace)
+      case namespace
+        when nil, :default
+          :dashboard
+        when :foospace
+          :footab
+        else
+          :elsetab
+      end
     end
   end
-end
-
-
-class BuilderTest < ActiveSupport::TestCase
   
   def setup
     @template = BuilderTemplate.new
+    @builder  = TabsOnRails::Tabs::Builder.new(@template)
   end
   
 
@@ -34,7 +34,6 @@ class BuilderTest < ActiveSupport::TestCase
   end
 
   def test_initialize_should_set_context
-    @builder  = TabsOnRails::Tabs::Builder.new(@template)
     assert_equal(@template, @builder.instance_variable_get(:'@context'))
   end
 
@@ -65,18 +64,23 @@ class BuilderTest < ActiveSupport::TestCase
 
 
   def test_open_tabs
-    @builder  = TabsOnRails::Tabs::Builder.new(@template)
-    assert_equal(nil, @builder.open_tabs)
+    assert_equal nil, @builder.open_tabs
+  end
+
+  def test_open_tabs_with_options
+    assert_equal nil, @builder.open_tabs(:foo => "bar")
   end
 
   def test_close_tabs
-    @builder  = TabsOnRails::Tabs::Builder.new(@template)
-    assert_equal(nil, @builder.close_tabs)
+    assert_equal nil, @builder.close_tabs
+  end
+
+  def test_close_tabs_with_options
+    assert_equal nil, @builder.close_tabs(:foo => "bar")
   end
 
 
   def test_tab_for_should_raise_not_implemented_error
-    @builder  = TabsOnRails::Tabs::Builder.new(@template)
     assert_raise(NotImplementedError) { @builder.tab_for }
     assert_raise(NotImplementedError) { @builder.tab_for('foo') }
     assert_raise(NotImplementedError) { @builder.tab_for('foo', 'bar') }

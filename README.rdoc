@@ -84,6 +84,22 @@ Use the <tt>current_tab</tt> helper method if you need to access the value of cu
   # In your view
   <p>The name of current tab is <%= current_tab %>.</p>
 
+The open tag can be customized with the `:open_tabs` option. 
+
+  <% tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
+    <%= tab.home      'Homepage', root_path %>
+    <%= tab.dashboard 'Dashboard', dashboard_path %>
+    <%= tab.account   'Account', account_path %>
+  <% end %>
+
+  <ul id="tabs" class="cool">
+    <li><a href="/">Homepage</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/account">Account</a></li>
+  </ul>
+
+Further customizations require a custom Builder (see below).
+
 
 == Restricting set_tab scope
 
