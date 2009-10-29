@@ -119,12 +119,7 @@ module TabsOnRails
         options = options.dup
         open_tabs_options  = options.delete(:open_tabs)  || {}
         close_tabs_options = options.delete(:close_tabs) || {}
-
-        unless options.is_a?(Hash)
-          ActiveSupport::Deprecation.warn('tabs_tag takes a Hash of options, no longer a builder class. Use :builder => BuilderClass.', caller)
-          options = { :builder => options }
-        end
-        tabs  = Tabs.new(self, { :namespace => :default }.merge(options))
+        tabs = Tabs.new(self, { :namespace => :default }.merge(options))
 
         concat(tabs.open_tabs(open_tabs_options).to_s)
         yield  tabs

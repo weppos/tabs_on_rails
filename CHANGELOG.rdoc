@@ -5,6 +5,8 @@
 
 * ADDED: Ability to pass arbitrary options to open_tabs and close_tags method. Thanks to aaronchi (closes #315)
 
+* REMOVED: tabs_tag no longer accepts a Builder as first parameter. Removed deprecation warning.
+
 
 == Release 0.8.2
 
