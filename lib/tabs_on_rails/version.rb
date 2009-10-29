@@ -17,15 +17,15 @@
 module TabsOnRails
 
   module Version
-    MAJOR = 0
-    MINOR = 8
-    TINY  = 2
+    MAJOR = 1
+    MINOR = 0
+    TINY  = 0
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
 
   VERSION         = Version::STRING
-  STATUS          = 'beta'
+  STATUS          = 'stable'
   BUILD           = ''.match(/(\d+)/).to_a.first
 
 end
