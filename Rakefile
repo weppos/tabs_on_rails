@@ -31,7 +31,7 @@ Echoe.new(PKG_NAME, PKG_VERSION) do |p|
   p.development_dependencies += ["rake  ~>0.8.7",
                                  "echoe ~>3.2.0"]
 
-  p.rcov_options  = ["-Itest -x rcov,Rakefile"]
+  p.rcov_options  = ["-Itest -x Rakefile,rcov,json,mocha,rack,actionpack,activesupport"]
 end
 
 
