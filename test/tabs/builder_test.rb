@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BuilderTest < ActiveSupport::TestCase
   
-  BuilderTemplate = Class.new do
+  Template = Class.new do
     include ActionView::Helpers::TagHelper
     include ActionView::Helpers::UrlHelper
 
@@ -19,7 +19,7 @@ class BuilderTest < ActiveSupport::TestCase
   end
   
   def setup
-    @template = BuilderTemplate.new
+    @template = Template.new
     @builder  = TabsOnRails::Tabs::Builder.new(@template)
   end
   

@@ -1,44 +1,41 @@
 require 'test_helper'
 
-class MockBuilder < TabsOnRails::Tabs::Builder
-
-  def initialize_with_mocha(*args)
-    checkpoint
-    initialize_without_mocha(*args)
-  end
-  alias_method_chain :initialize, :mocha
-
-  def checkpoint
-  end
-
-  def tab_for(tab, name, *args)
-  end
-
-end
-
-class NilBoundariesBuilder < TabsOnRails::Tabs::Builder
-  def tab_for(tab, name, *args)
-    @context.content_tag(:span, name)
-  end
-end
-
-class NilOpenBoundaryBuilder < NilBoundariesBuilder
-  def close_tabs(options = {})
-    '<br />'
-  end
-end
-
-class NilCloseBoundaryBuilder < NilBoundariesBuilder
-  def open_tabs(options = {})
-    '<br />'
-  end
-end
-
-
 class ControllerMixinHelpersTest < ActionView::TestCase
   tests TabsOnRails::ControllerMixin::HelperMethods
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::UrlHelper
+
+  MockBuilder = Class.new(TabsOnRails::Tabs::Builder) do
+    def initialize_with_mocha(*args)
+      checkpoint
+      initialize_without_mocha(*args)
+    end
+    alias_method_chain :initialize, :mocha
+
+    def checkpoint
+    end
+
+    def tab_for(tab, name, *args)
+    end
+  end
+
+  NilBoundariesBuilder = Class.new(TabsOnRails::Tabs::Builder) do
+    def tab_for(tab, name, *args)
+      @context.content_tag(:span, name)
+    end
+  end
+
+  NilOpenBoundaryBuilder = Class.new(NilBoundariesBuilder) do
+    def close_tabs(options = {})
+      '<br />'
+    end
+  end
+
+  NilCloseBoundaryBuilder = Class.new(NilBoundariesBuilder) do
+    def open_tabs(options = {})
+      '<br />'
+    end
+  end
 
 
   def test_tabs_tag_should_raise_local_jump_error_without_block

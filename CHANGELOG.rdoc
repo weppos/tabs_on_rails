@@ -1,6 +1,11 @@
 = Changelog
 
 
+== master
+
+* FIXED: Incompatibility with release < 1.0.0 caused by open_tabs and close_tabs methods changes compared to 0.8.0.
+
+
 == Release 1.0.0
 
 * ADDED: Ability to pass arbitrary options to open_tabs and close_tags method. Thanks to aaronchi (closes #315)

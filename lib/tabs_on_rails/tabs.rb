@@ -27,10 +27,19 @@ module TabsOnRails
       @builder = (options.delete(:builder) || TabsBuilder).new(@context, options)
     end
     
-    %w(open_tabs close_tabs).each do |method|
-      define_method(method) do |*args|
-        @builder.send(method, *args)
-      end
+    %w(open_tabs close_tabs).each do |name|
+      define_method(name) do |*args|                      # def open_tabs(*args)
+        method = @builder.method(name)                    #   method = @builder.method(:open_tabs)
+        if method.arity.zero?                             #   if method.arity.zero?
+          message = "Incomplete `#{name}' definition. " + #     ...
+            "Use #{name}(*args) to ignore arguments "   + #     ...
+            "or #{name}(options) to collect options"      #     ...
+          ActiveSupport::Deprecation.warn(message)        #     ...
+          method.call                                     #     method.call
+        else                                              #   else
+          method.call(*args)                              #     method.call(*args)
+        end                                               #   end
+      end                                                 # end
     end
     
     def method_missing(*args)
