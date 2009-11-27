@@ -21,11 +21,9 @@ module TabsOnRails
     MINOR = 0
     TINY  = 0
 
-    STRING = [MAJOR, MINOR, TINY].join('.')
+    STRING = [MAJOR, MINOR, PATCH, ALPHA].compact.join('.')
   end
 
-  VERSION         = Version::STRING
-  STATUS          = 'stable'
-  BUILD           = ''.match(/(\d+)/).to_a.first
+  VERSION = Version::STRING
 
 end
