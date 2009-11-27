@@ -13,8 +13,8 @@ RUBYFORGE_PROJECT = nil
 if ENV['SNAPSHOT'].to_i == 1
   PKG_VERSION << "." << Time.now.utc.strftime("%Y%m%d%H%M%S")
 end
- 
- 
+
+
 Echoe.new(PKG_NAME, PKG_VERSION) do |p|
   p.author        = "Simone Carletti"
   p.email         = "weppos@weppos.net"
