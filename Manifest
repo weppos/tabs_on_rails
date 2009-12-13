@@ -20,5 +20,6 @@ test/fixtures/mixin/default.html.erb
 test/fixtures/mixin/with_open_close_tabs.html.erb
 test/tabs/builder_test.rb
 test/tabs/tabs_builder_test.rb
+test/tabs_test.rb
 test/test_helper.rb
 uninstall.rb
