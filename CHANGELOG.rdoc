@@ -1,11 +1,14 @@
 = Changelog
 
-
 == master
 
 * FIXED: Incompatibility with release < 1.0.0 caused by open_tabs and close_tabs methods changes compared to 0.8.0.
 
 * CHANGED: Removed BUILD and STATUS constants. Added Version::ALPHA constant to be used when I need to package prereleases (see RubyGem --prerelease flag).
+
+* CHANGED: Removed empty install/uninstall hooks and tasks folder.
+
+* CHANGED: Removed rails/init hook because deprecated in Rails 3.
 
 
 == Release 1.0.0
