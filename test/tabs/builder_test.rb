@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class BuilderTest < ActiveSupport::TestCase
-  
+
   Template = Class.new do
     include ActionView::Helpers::TagHelper
     include ActionView::Helpers::UrlHelper
@@ -17,12 +17,12 @@ class BuilderTest < ActiveSupport::TestCase
       end
     end
   end
-  
+
   def setup
     @template = Template.new
     @builder  = TabsOnRails::Tabs::Builder.new(@template)
   end
-  
+
 
   def test_initialize_should_require_context
     assert_raise(ArgumentError) { TabsOnRails::Tabs::Builder.new }

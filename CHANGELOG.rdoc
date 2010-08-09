@@ -1,6 +1,7 @@
 = Changelog
 
-== master
+
+== Release 1.1.0
 
 * FIXED: Incompatibility with release < 1.0.0 caused by open_tabs and close_tabs methods changes compared to 0.8.0.
 

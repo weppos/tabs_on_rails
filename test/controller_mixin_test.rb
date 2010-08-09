@@ -13,7 +13,7 @@ class ControllerMixinTest < ActionController::TestCase
     @response         = ActionController::TestResponse.new
   end
 
-  
+
   def test_set_tab
     controller.set_tab :footab
     assert_equal(:footab, controller.tab_stack[:default])
@@ -144,24 +144,24 @@ class ControllerMixinHelpersTest < ActionView::TestCase
       assert_equal(:custom, builder.instance_variable_get(:'@namespace'))
     end
   end
-  
-  
+
+
   def test_tabs_tag_should_not_concat_open_close_tabs_when_nil
     content = tabs_tag(:builder => NilBoundariesBuilder) do |t| 
       concat t.single('Single', '#')
     end
-    
+
     assert_dom_equal('<span>Single</span>', content)
   end
-  
+
   def test_tabs_tag_should_not_concat_open_tabs_when_nil
     content = tabs_tag(:builder => NilOpenBoundaryBuilder) do |t|
       concat t.single('Single', '#')
     end
-    
+
     assert_dom_equal('<span>Single</span><br />', content)
   end
-  
+
   def test_tabs_tag_should_not_concat_close_tabs_when_nil
     content = tabs_tag(:builder => NilCloseBoundaryBuilder) do |t|
       concat t.single('Single', '#')
@@ -175,7 +175,7 @@ end
 
 class ControllerMixinWithControllerTest < ActionController::TestCase
   include ControllerTestHelpers
-  
+
   class MixinController < ActionController::Base
     def self.controller_name; "mixin"; end
     def self.controller_path; "mixin"; end
