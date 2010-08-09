@@ -10,6 +10,8 @@
 
 * CHANGED: Removed rails/init hook because deprecated in Rails 3.
 
+* REMOVED: Deleted empty install.rb file.
+
 
 == Release 1.0.0
 
