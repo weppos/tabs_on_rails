@@ -4,6 +4,8 @@
 
 * CHANGED: Simplified tabs_tag helper by moving the rendering logic into TabsOnRails::Tabs#render.
 
+* CHANGED: TabsOnRails::Tabs::Builder (and all child classes) now has full access to @options hash.
+
 
 == Release 1.1.0
 

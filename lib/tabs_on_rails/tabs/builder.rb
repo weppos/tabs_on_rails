@@ -35,12 +35,14 @@ module TabsOnRails
     #
     class Builder
 
-      # Initializes a new builder with +context+.
+      # Initializes a new builder with the given hash of <tt>options</tt>,
+      # providing the current Rails template as <tt>context</tt>.
       #
-      # Warning: You should not Override this method to prevent incompatibility with future versions.
+      # Warning: You should not override this method to prevent incompatibility with future versions.
       def initialize(context, options = {})
         @context   = context
         @namespace = options.delete(:namespace) || :default
+        @options   = options
       end
 
       # Returns true if +tab+ is the +current_tab+.

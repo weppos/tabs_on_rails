@@ -24,8 +24,8 @@ module TabsOnRails
 
     def initialize(context, options = {}, &block)
       @context = context
-      @options = options
       @builder = (options.delete(:builder) || TabsBuilder).new(@context, options)
+      @options = options
     end
     
     %w(open_tabs close_tabs).each do |name|
