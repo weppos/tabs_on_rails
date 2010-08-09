@@ -9,7 +9,7 @@ It provides helpers for creating tabs with a flexible interface.
 * Ruby >= 1.8.6
 * Rails >= 2.2
 
-Note. TabsOnRails doesn't work with Rails 2.1 or previous versions (see {Ticket #245}[http://code.simonecarletti.com/issues/show/245]).
+Note. TabsOnRails doesn't work with Rails 2.1 or previous versions (see {this comment}[http://www.simonecarletti.com/blog/2009/04/tabsonrails/#comment-2901] and {this commit}[http://github.com/weppos/tabs_on_rails/commit/d5ae9f401e3d0acc87251fa8957a8625e90ba4b3]).
 
 
 == Rails Installation
@@ -17,9 +17,9 @@ Note. TabsOnRails doesn't work with Rails 2.1 or previous versions (see {Ticket 
 === As a Gem
 
 This is the preferred way to install TabsOnRails and the best way if you want install a stable version.
-The GEM is hosted on {Gemcutter}[http://gemcutter.org/gems/tabs_on_rails].
+The GEM is hosted on {RubyGems}[http://rubygems.org/gems/tabs_on_rails].
 
-  $ gem install tabs_on_rails --source http://gemcutter.org
+  $ gem install tabs_on_rails
 
 With Rails >= 2.2, you can specify the GEM dependency in your environment.rb file so that Rails will automatically check the requirement on startup.
 
@@ -28,7 +28,7 @@ With Rails >= 2.2, you can specify the GEM dependency in your environment.rb fil
     # other configurations
     # ...
     
-    config.gem "tabs_on_rails", :source => "http://gemcutter.org"
+    config.gem "tabs_on_rails"
     
   end
 
@@ -267,11 +267,6 @@ This is the final result.
     <li class="" style="float: right;"><a href="/account">Account</a></li>
   </ul>
 
-== Documentation
-
-The library is still under development and this README file might not be contain the latest changes.
-For the full documentation, development roadmap and more information please visit the {project page}[http://code.simonecarletti.com/wiki/tabsonrails].
-
 
 == Author
 
@@ -280,7 +275,7 @@ For the full documentation, development roadmap and more information please visi
 
 == Resources
 
-* {Homepage}[http://code.simonecarletti.com/tabsonrails]
+* {Homepage}[http://www.simonecarletti.com/code/tabs_on_rails]
 * {Source}[http://github.com/weppos/tabs_on_rails]
 * {Bugs & Features}[http://github.com/weppos/tabs_on_rails/issues]
 
