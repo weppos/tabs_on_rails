@@ -22,7 +22,7 @@ module TabsOnRails
     class Railtie < Rails::Railtie
       initializer "tabs_on_rails.initialize" do
         ActiveSupport.on_load :action_controller do
-          TabsOnRails::Railtie.initialize
+          TabsOnRails::Railtie.init
         end
       end
     end
