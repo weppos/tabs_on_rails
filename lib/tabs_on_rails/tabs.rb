@@ -54,9 +54,17 @@ module TabsOnRails
       open_tabs_options  = options.delete(:open_tabs)  || {}
       close_tabs_options = options.delete(:close_tabs) || {}
 
-      @context.concat(open_tabs(open_tabs_options).to_s)
-      yield self
-      @context.concat(close_tabs(close_tabs_options).to_s)
+      if Railtie.rails_version < "3"
+        @context.concat(open_tabs(open_tabs_options).to_s)
+        yield self
+        @context.concat(close_tabs(close_tabs_options).to_s)
+      else
+        "".tap do |html|
+          html << open_tabs(open_tabs_options).to_s
+          html << capture(self, &block)
+          html << close_tabs(close_tabs_options).to_s
+        end.html_safe
+      end
     end
 
   end

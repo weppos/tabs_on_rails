@@ -16,6 +16,7 @@
 
 require 'tabs_on_rails/controller_mixin'
 require 'tabs_on_rails/tabs'
+require 'tabs_on_rails/railtie'
 require 'tabs_on_rails/version'
 
 
