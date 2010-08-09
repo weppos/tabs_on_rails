@@ -22,7 +22,7 @@ module TabsOnRails
 
   class Tabs
 
-    def initialize(context, options = {}, &block)
+    def initialize(context, options = {})
       @context = context
       @builder = (options.delete(:builder) || TabsBuilder).new(@context, options)
       @options = options
