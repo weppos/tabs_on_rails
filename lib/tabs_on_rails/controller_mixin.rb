@@ -1,8 +1,8 @@
-# 
+#
 # = Tabs on Rails
 #
 # A simple Ruby on Rails plugin for creating and managing Tabs.
-# 
+#
 #
 # Category::    Rails
 # Package::     TabsOnRails
@@ -10,7 +10,7 @@
 # License::     MIT License
 #
 #--
-# 
+#
 #++
 
 
@@ -43,8 +43,8 @@ module TabsOnRails
       # For example, you can set the tab only for a restricted group of actions in the same controller
       # using the <tt>:only</tt> and <tt>:except</tt> options.
       #
-      # ==== Examples
-      # 
+      # Examples
+      #
       #   set_tab :foo
       #   set_tab :foo, :except => :new
       #   set_tab :foo, :only => [ :index, :show ]
@@ -69,7 +69,7 @@ module TabsOnRails
         # Sets the value for current tab to given name.
         # If you need to manage multiple tabs, then you can pass an optional namespace.
         #
-        # ==== Examples
+        # Examples
         #
         #   set_tab :homepage
         #   set_tab :dashboard, :menu
@@ -82,7 +82,7 @@ module TabsOnRails
         # or nil if no tab has been set before.
         # You can pass <tt>namespace</tt> to get the value of current tab for a different namespace.
         #
-        # ==== Examples
+        # Examples
         #
         #   current_tab           # => nil
         #   current_tab :menu     # => nil
@@ -113,6 +113,67 @@ module TabsOnRails
 
     module HelperMethods
 
+      # In your template use the <tt>tabs_tag</tt> helper to create your tab.
+      #
+      #   <% tabs_tag do |tab| %>
+      #     <%= tab.home      'Homepage', root_path %>
+      #     <%= tab.dashboard 'Dashboard', dashboard_path %>
+      #     <%= tab.account   'Account', account_path %>
+      #   <% end %>
+      #
+      # The example above produces the following HTML output.
+      #
+      #   <ul>
+      #     <li><a href="/">Homepage</a></li>
+      #     <li><a href="/dashboard">Dashboard</a></li>
+      #     <li><a href="/account">Account</a></li>
+      #   </ul>
+      #
+      # The usage is similar to the Rails route file.
+      # You create named tabs with the syntax <tt>tab.name_of_tab</tt>.
+      #
+      # The name you use creating a tab is the same you're going to refer to in your controller
+      # when you want to mark a tab as the current tab.
+      #
+      #   class DashboardController < ApplicationController
+      #     set_tab :dashboard
+      #   end
+      #
+      # Now, if the action belongs to <tt>DashboardController</tt>,
+      # the template will automatically render the following HTML code.
+      # 
+      #   <ul>
+      #     <li><a href="/">Homepage</a></li>
+      #     <li><span>Dashboard</span></li>
+      #     <li><a href="/account">Account</a></li>
+      #   </ul>
+      #
+      # Use the <tt>current_tab</tt> helper method if you need to access
+      # the value of current tab in your controller or template.
+      #
+      #   class DashboardController < ApplicationController
+      #     set_tab :dashboard
+      #   end
+      #
+      #   # In your view
+      #   <p>The name of current tab is <%= current_tab %>.</p>
+      #
+      # The open_tag can be customized with the <tt>:open_tabs</tt> option.
+      #
+      #   <% tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
+      #     <%= tab.home      'Homepage', root_path %>
+      #     <%= tab.dashboard 'Dashboard', dashboard_path %>
+      #     <%= tab.account   'Account', account_path %>
+      #   <% end %>
+      #
+      #   <ul id="tabs" class="cool">
+      #     <li><a href="/">Homepage</a></li>
+      #     <li><a href="/dashboard">Dashboard</a></li>
+      #     <li><a href="/account">Account</a></li>
+      #   </ul>
+      #
+      # Further customizations require a custom <tt>Builder</tt>.
+      #
       def tabs_tag(options = {}, &block)
         Tabs.new(self, { :namespace => :default }.merge(options)).render(&block)
       end

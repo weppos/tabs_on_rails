@@ -67,7 +67,7 @@ when you want to mark a tab as the current tab.
     set_tab :dashboard
   end
 
-Now, if the action belongs to DashboardController, the template will automatically render the following HTML code.
+Now, if the action belongs to <tt>DashboardController</tt>, the template will automatically render the following HTML code.
 
   <ul>
     <li><a href="/">Homepage</a></li>
@@ -84,7 +84,7 @@ Use the <tt>current_tab</tt> helper method if you need to access the value of cu
   # In your view
   <p>The name of current tab is <%= current_tab %>.</p>
 
-The open_tag can be customized with the `:open_tabs` option. 
+The open_tag can be customized with the <tt>:open_tabs</tt> option.
 
   <% tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
     <%= tab.home      'Homepage', root_path %>
@@ -98,7 +98,7 @@ The open_tag can be customized with the `:open_tabs` option.
     <li><a href="/account">Account</a></li>
   </ul>
 
-Further customizations require a custom Builder (see below).
+Further customizations require a custom <tt>Builder</tt> (see below).
 
 
 == Restricting set_tab scope
