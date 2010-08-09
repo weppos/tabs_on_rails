@@ -24,6 +24,7 @@ module TabsOnRails
 
     def initialize(context, options = {}, &block)
       @context = context
+      @options = options
       @builder = (options.delete(:builder) || TabsBuilder).new(@context, options)
     end
     
@@ -45,7 +46,19 @@ module TabsOnRails
     def method_missing(*args)
       @builder.tab_for(*args)
     end
-    
+
+    def render(&block)
+      raise LocalJumpError, "no block given" unless block_given?
+
+      options = @options.dup
+      open_tabs_options  = options.delete(:open_tabs)  || {}
+      close_tabs_options = options.delete(:close_tabs) || {}
+
+      @context.concat(open_tabs(open_tabs_options).to_s)
+      yield self
+      @context.concat(close_tabs(close_tabs_options).to_s)
+    end
+
   end
 
 end

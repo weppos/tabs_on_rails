@@ -1,5 +1,9 @@
 = Changelog
 
+== master
+
+* CHANGED: Simplified tabs_tag helper by moving the rendering logic into TabsOnRails::Tabs#render.
+
 
 == Release 1.1.0
 
