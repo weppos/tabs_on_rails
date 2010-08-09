@@ -10,6 +10,8 @@
 
 * CHANGED: Removed rails/init hook because deprecated in Rails 3.
 
+* CHANGED: Drop dependency from Echoe. Change Rakefile to use custom tasks.
+
 * REMOVED: Deleted empty install.rb file.
 
 

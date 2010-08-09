@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TabsTest < ActiveSupport::TestCase
-  
+
   Template = Class.new do
     include ActionView::Helpers::TagHelper
     include ActionView::Helpers::UrlHelper
