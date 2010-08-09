@@ -21,8 +21,7 @@ require 'tabs_on_rails/version'
 
 module TabsOnRails
   
-  NAME            = 'Tabs on Rails'
-  GEM             = 'tabs_on_rails'
-  AUTHOR          = 'Simone Carletti <weppos@weppos.net>'
-  
+  NAME            = "Tabs on Rails"
+  GEM             = "tabs_on_rails"
+
 end

@@ -15,11 +15,11 @@
 
 
 module TabsOnRails
-  
+
   module ControllerMixin
-    
+
     def self.included(base)
-      base.extend         ClassMethods
+      base.extend     ClassMethods
       base.class_eval do
         include       InstanceMethods
         helper        HelperMethods
@@ -55,7 +55,7 @@ module TabsOnRails
       def set_tab(*args)
         options = args.extract_options!
         name, namespace = args
-        
+
         before_filter(options) do |controller|
           controller.send(:set_tab, name, namespace)
         end
@@ -115,7 +115,7 @@ module TabsOnRails
 
       def tabs_tag(options = {}, &block)
         raise LocalJumpError, "no block given" unless block_given?
-        
+
         options = options.dup
         open_tabs_options  = options.delete(:open_tabs)  || {}
         close_tabs_options = options.delete(:close_tabs) || {}
