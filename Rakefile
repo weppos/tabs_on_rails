@@ -82,7 +82,7 @@ task :gemspec do
   File.open(file, "w") {|f| f << spec.to_ruby }
 end
 
-desc "Remove any temporary products, including gemspec."
+desc "Remove any temporary products, including gemspec"
 task :clean => [:clobber] do
   rm "#{spec.name}.gemspec"
 end
@@ -96,7 +96,7 @@ task :package => [:gemspec]
 begin
   require "rcov/rcovtask"
 
-  desc "Create a code coverage report."
+  desc "Create a code coverage report"
   Rcov::RcovTask.new do |t|
     t.test_files = FileList["test/**/*_test.rb"]
     t.ruby_opts << "-Itest -x mocha,rcov,Rakefile"
@@ -117,4 +117,10 @@ begin
   end
 rescue LoadError
   puts "CodeStatistics (Rails) is not available"
+end
+
+desc "Publish documentation to the site"
+task :publish_rdoc => [:clobber_rdoc, :rdoc] do
+  ENV["username"] || raise(ArgumentError, "Missing ssh username")
+  sh "rsync -avz --delete rdoc/ #{ENV["username"]}@code:/var/www/apps/code/#{PKG_NAME}/api"
 end
