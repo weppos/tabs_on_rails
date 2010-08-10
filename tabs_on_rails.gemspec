@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tabs_on_rails}
-  s.version = "1.2.0"
+  s.version = "1.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simone Carletti"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 }
   s.email = %q{weppos@weppos.net}
   s.extra_rdoc_files = ["CHANGELOG.rdoc", "LICENSE.rdoc", "README.rdoc"]
-  s.files = ["Rakefile", "init.rb", "CHANGELOG.rdoc", "LICENSE.rdoc", "README.rdoc", "tabs_on_rails.gemspec", "test/controller_mixin_test.rb", "test/fixtures/mixin/default.html.erb", "test/fixtures/mixin/with_open_close_tabs.html.erb", "test/tabs/builder_test.rb", "test/tabs/tabs_builder_test.rb", "test/tabs_test.rb", "test/test_helper.rb", "lib/tabs_on_rails/controller_mixin.rb", "lib/tabs_on_rails/railtie.rb", "lib/tabs_on_rails/tabs/builder.rb", "lib/tabs_on_rails/tabs/tabs_builder.rb", "lib/tabs_on_rails/tabs.rb", "lib/tabs_on_rails/version.rb", "lib/tabs_on_rails.rb", "rails/init.rb"]
+  s.files = ["Rakefile", "init.rb", "CHANGELOG.rdoc", "LICENSE.rdoc", "README.rdoc", "tabs_on_rails.gemspec", "test/controller_mixin_test.rb", "test/fixtures/mixin/default.html.erb", "test/fixtures/mixin/with_item_options.html.erb", "test/fixtures/mixin/with_open_close_tabs.html.erb", "test/tabs/builder_test.rb", "test/tabs/tabs_builder_test.rb", "test/tabs_test.rb", "test/test_helper.rb", "lib/tabs_on_rails/controller_mixin.rb", "lib/tabs_on_rails/railtie.rb", "lib/tabs_on_rails/tabs/builder.rb", "lib/tabs_on_rails/tabs/tabs_builder.rb", "lib/tabs_on_rails/tabs.rb", "lib/tabs_on_rails/version.rb", "lib/tabs_on_rails.rb", "rails/init.rb"]
   s.homepage = %q{http://www.simonecarletti.com/code/tabs_on_rails}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
