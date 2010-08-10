@@ -1,6 +1,7 @@
 = Changelog
 
-== master
+
+== Release 1.2.0
 
 * ADDED: Rails 3 compatibility.
 
