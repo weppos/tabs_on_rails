@@ -30,19 +30,27 @@ module TabsOnRails
       #   current_tab? :foo   # => true
       # 
       #   tab_for :foo, 'Foo', foo_path
-      #   # => <li><span>Foo</span></li>
+      #   # => "<li class="current"><span>Foo</span></li>"
       # 
       #   tab_for :bar, 'Bar', bar_path
-      #   # => <li><a href="/link/to/bar">Bar</a></li>
+      #   # => "<li><a href="/link/to/bar">Bar</a></li>"
       # 
+      # You can pass a hash of <tt>item_options</tt>
+      # to customize the behavior and the style of the li element.
+      #
+      #   # Pass a custom class to the element
+      #   tab_for :bar, 'Bar', bar_path, :class => "custom"
+      #   # => "<li class="custom"><a href="/link/to/bar">Bar</a></li>"
+      #
       # Implements Builder#tab_for.
       #
-      def tab_for(tab, name, options)
+      def tab_for(tab, name, options, item_options = {})
+        item_options[:class] = item_options[:class].to_s.split(" ").push("current").join(" ") if current_tab?(tab)
         content = @context.link_to_unless(current_tab?(tab), name, options) do
           @context.content_tag(:span, name)
         end
-        @context.content_tag(:li, content)
-      end
+        @context.content_tag(:li, content, item_options)
+     end
 
       # Returns an unordered list open tag.
       #

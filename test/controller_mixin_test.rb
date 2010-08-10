@@ -151,7 +151,7 @@ class ControllerMixinHelpersTest < ActionView::TestCase
       concat t.single('Single', '#')
     end
 
-    assert_dom_equal('<span>Single</span>', content)
+    assert_dom_equal '<span>Single</span>', content
   end
 
   def test_tabs_tag_should_not_concat_open_tabs_when_nil
@@ -159,7 +159,7 @@ class ControllerMixinHelpersTest < ActionView::TestCase
       concat t.single('Single', '#')
     end
 
-    assert_dom_equal('<span>Single</span><br />', content)
+    assert_dom_equal '<span>Single</span><br />', content
   end
 
   def test_tabs_tag_should_not_concat_close_tabs_when_nil
@@ -167,7 +167,7 @@ class ControllerMixinHelpersTest < ActionView::TestCase
       concat t.single('Single', '#')
     end
 
-    assert_dom_equal('<br /><span>Single</span>', content)
+    assert_dom_equal '<br /><span>Single</span>', content
   end
 
 end
@@ -208,17 +208,25 @@ class ControllerMixinWithControllerTest < ActionController::TestCase
 
   def test_render_default
     get :action_dashboard
-    assert_equal(%Q{<ul>
-  <li><span>Dashboard</span></li>
+    assert_dom_equal(%Q{<ul>
+  <li class="current"><span>Dashboard</span></li>
   <li><a href="/w">Welcome</a></li>
 </ul>}, @response.body)
   end
 
   def test_render_with_open_close_tabs
     get :action_dashboard, :template => "with_open_close_tabs"
-    assert_equal(%Q{<ul id="tabs">
-  <li><span>Dashboard</span></li>
+    assert_dom_equal(%Q{<ul id="tabs">
+  <li class="current"><span>Dashboard</span></li>
   <li><a href="/w">Welcome</a></li>
+</ul>}, @response.body)
+  end
+
+  def test_render_with_item_options
+    get :action_dashboard, :template => "with_item_options"
+    assert_dom_equal(%Q{<ul id="tabs">
+  <li class="custom current"><span>Dashboard</span></li>
+  <li class="custom"><a href="/w">Welcome</a></li>
 </ul>}, @response.body)
   end
 
@@ -227,8 +235,8 @@ class ControllerMixinWithControllerTest < ActionController::TestCase
     get :action_dashboard
     assert_equal(:dashboard, controller.current_tab)
     assert_equal(:dashboard, controller.current_tab(:default))
-    assert_equal(%Q{<ul>
-  <li><span>Dashboard</span></li>
+    assert_dom_equal(%Q{<ul>
+  <li class="current"><span>Dashboard</span></li>
   <li><a href="/w">Welcome</a></li>
 </ul>}, @response.body)
   end
@@ -237,9 +245,9 @@ class ControllerMixinWithControllerTest < ActionController::TestCase
     get :action_welcome
     assert_equal(:welcome, controller.current_tab)
     assert_equal(:welcome, controller.current_tab(:default))
-    assert_equal(%Q{<ul>
+    assert_dom_equal(%Q{<ul>
   <li><a href="/d">Dashboard</a></li>
-  <li><span>Welcome</span></li>
+  <li class="current"><span>Welcome</span></li>
 </ul>}, @response.body)
   end
 
@@ -248,8 +256,8 @@ class ControllerMixinWithControllerTest < ActionController::TestCase
     assert_equal(:dashboard, controller.current_tab)
     assert_equal(:dashboard, controller.current_tab(:default))
     assert_equal(:homepage, controller.current_tab(:namespace))
-    assert_equal(%Q{<ul>
-  <li><span>Dashboard</span></li>
+    assert_dom_equal(%Q{<ul>
+  <li class="current"><span>Dashboard</span></li>
   <li><a href="/w">Welcome</a></li>
 </ul>}, @response.body)
   end

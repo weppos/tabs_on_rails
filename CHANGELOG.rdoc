@@ -1,6 +1,23 @@
 = Changelog
 
 
+== master
+
+* ADDED: Ability to customize the behavior and the style of the li tab item
+         passing a hash of options.
+
+           <% tabs_tag do |tab| %>
+             <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
+             <%= tab.dashboard 'Dashboard', dashboard_path %>
+           <% end %>
+           
+           <ul>
+             <li style="padding: 10px"><a href="/">Homepage</a></li>
+             <li class="custom"><span>Dashboard</span></li>
+             <li><a href="/account">Account</a></li>
+           </ul>
+
+
 == Release 1.2.0
 
 * ADDED: Rails 3 compatibility.

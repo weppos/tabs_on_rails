@@ -144,7 +144,7 @@ module TabsOnRails
       # 
       #   <ul>
       #     <li><a href="/">Homepage</a></li>
-      #     <li><span>Dashboard</span></li>
+      #     <li class="custom"><span>Dashboard</span></li>
       #     <li><a href="/account">Account</a></li>
       #   </ul>
       #
@@ -158,7 +158,34 @@ module TabsOnRails
       #   # In your view
       #   <p>The name of current tab is <%= current_tab %>.</p>
       #
-      # The open_tag can be customized with the <tt>:open_tabs</tt> option.
+      # === Customizing a Tab
+      #
+      # You can pass a hash of options to customize the style and the behavior of the tab item.
+      # Behind the scenes, each time you create a tab, the <tt>#tab_for</tt> 
+      # method is invoked.
+      #
+      #   <% tabs_tag do |tab| %>
+      #     <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
+      #     <%= tab.dashboard 'Dashboard', dashboard_path %>
+      #   <% end %>
+      #
+      #   <ul>
+      #     <li style="padding: 10px"><a href="/">Homepage</a></li>
+      #     <li class="custom"><span>Dashboard</span></li>
+      #     <li><a href="/account">Account</a></li>
+      #   </ul>
+      #
+      # You can pass any option supported by the <li>content_tag</li> Rails helper.
+      # Additionally, the following options have a special meaning:
+      #
+      # * <tt>link_current</tt>: forces the current tab to be a link, instead of a span tag
+      #
+      # See <tt>TabsOnRails::Tabs::TabsBuilder#tab_for</tt> for more details.
+      #
+      # === Customizing open_tabs and close_tabs
+      #
+      # The open_tabs and the close_tabs methods can be customized 
+      # with the <tt>:open_tabs</tt> and <tt>:close_tabs</tt> option.
       #
       #   <% tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
       #     <%= tab.home      'Homepage', root_path %>

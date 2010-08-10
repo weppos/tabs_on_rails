@@ -72,7 +72,7 @@ The example above produces the following HTML output.
   </ul>
 
 The usage is similar to the Rails route file.
-You create named tabs with the syntax <tt>tab.name_of_tab</tt>. 
+You create named tabs with the syntax <tt>tab.name_of_tab</tt>.
 
 The name you use creating a tab is the same you're going to refer to in your controller
 when you want to mark a tab as the current tab.
@@ -85,7 +85,7 @@ Now, if the action belongs to <tt>DashboardController</tt>, the template will au
 
   <ul>
     <li><a href="/">Homepage</a></li>
-    <li><span>Dashboard</span></li>
+    <li class="custom"><span>Dashboard</span></li>
     <li><a href="/account">Account</a></li>
   </ul>
 
@@ -98,7 +98,28 @@ Use the <tt>current_tab</tt> helper method if you need to access the value of cu
   # In your view
   <p>The name of current tab is <%= current_tab %>.</p>
 
-The open_tag can be customized with the <tt>:open_tabs</tt> option.
+=== Customizing a Tab
+
+You can pass a hash of options to customize the style and the behavior of the tab item.
+Behind the scenes, each time you create a tab, the <tt>#tab_for</tt> 
+method is invoked.
+
+  <% tabs_tag do |tab| %>
+    <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
+    <%= tab.dashboard 'Dashboard', dashboard_path %>
+  <% end %>
+
+  <ul>
+    <li style="padding: 10px"><a href="/">Homepage</a></li>
+    <li class="custom"><span>Dashboard</span></li>
+    <li><a href="/account">Account</a></li>
+  </ul>
+
+See <tt>TabsOnRails::Tabs::TabsBuilder#tab_for</tt> for more details.
+
+=== Customizing open_tabs and close_tabs
+
+The open_tabs and the close_tabs methods can be customized with the <tt>:open_tabs</tt> and <tt>:close_tabs</tt> option.
 
   <% tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
     <%= tab.home      'Homepage', root_path %>
@@ -111,6 +132,7 @@ The open_tag can be customized with the <tt>:open_tabs</tt> option.
     <li><a href="/dashboard">Dashboard</a></li>
     <li><a href="/account">Account</a></li>
   </ul>
+
 
 Further customizations require a custom <tt>Builder</tt> (see below).
 
