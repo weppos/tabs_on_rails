@@ -313,6 +313,8 @@ This is the final result.
 
 * {Homepage}[http://www.simonecarletti.com/code/tabs_on_rails]
 * {Source}[http://github.com/weppos/tabs_on_rails]
+* {API Documentation}[http://www.simonecarletti.com/code/tabs_on_rails/api/]
+* {Wiki}[http://code.simonecarletti.com/projects/tabsonrails]
 * {Bugs & Features}[http://github.com/weppos/tabs_on_rails/issues]
 
 
