@@ -1,7 +1,13 @@
 require "rubygems"
 require "rake/testtask"
-require "rake/rdoctask"
 require "rake/gempackagetask"
+begin
+  require "hanna/rdoctask"
+  hanna = true
+rescue LoadError
+  require "rake/rdoctask"
+  hanna = false
+end
 
 $:.unshift(File.dirname(__FILE__) + "/lib")
 require "tabs_on_rails"
