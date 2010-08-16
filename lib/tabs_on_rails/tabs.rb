@@ -61,7 +61,7 @@ module TabsOnRails
       else
         "".tap do |html|
           html << open_tabs(open_tabs_options).to_s
-          html << capture(self, &block)
+          html << @context.capture(self, &block)
           html << close_tabs(close_tabs_options).to_s
         end.html_safe
       end
