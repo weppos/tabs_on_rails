@@ -1,7 +1,7 @@
-= TabsOnRails
+= Tabs on Rails
 
-TabsOnRails is a simple Rails plugin for creating and managing Tabs.
-It provides helpers for creating tabs with a flexible interface.
+*TabsOnRails* is a simple Rails plugin for creating tabs and navigation menus.
+It provides helpers for generating navigation menus with a flexible interface.
 
 
 == Requirements
@@ -13,22 +13,21 @@ or
 
 * Rails 3
 
-Warning: TabsOnRails doesn't work with Rails 2.1 or previous versions
+Warning: *TabsOnRails* doesn't work with Rails 2.1 or previous versions
 (see {this comment}[http://www.simonecarletti.com/blog/2009/04/tabsonrails/#comment-2901]
 and {this commit}[http://github.com/weppos/tabs_on_rails/commit/d5ae9f401e3d0acc87251fa8957a8625e90ba4b3]).
 
 
 == Installation
 
-=== As a Gem (Rails 2)
+=== As a Gem
 
-RubyGems is the preferred way to install TabsOnRails and the best way if you want install a stable version.
-The GEM is hosted on {RubyGems}[http://rubygems.org/gems/tabs_on_rails].
+{RubyGems}[http://rubygems.org] is the preferred way to install *TabsOnRails* and the best way if you want install a stable version.
 
   $ gem install tabs_on_rails
 
-With Rails >= 2.2, specify the Gem dependency in your environment.rb file so that Rails
-will automatically check the requirement on startup.
+With Rails >= 2.2, specify the Gem dependency in your <tt>environment.rb</tt> 
+file so that Rails will automatically check the requirement on startup.
 
   Rails::Initializer.run do |config|
     
@@ -39,7 +38,8 @@ will automatically check the requirement on startup.
     
   end
 
-With Rails 3, specify the Gem dependency in the {Bundler}[http://gembundler.com/] Gemfile.
+With Rails 3, specify the Gem dependency in the 
+{Bundler}[http://gembundler.com] Gemfile.
 
   gem "tabs_on_rails"
 
@@ -49,7 +49,8 @@ With Rails 3, specify the Gem dependency in the {Bundler}[http://gembundler.com/
   $ script/plugin install git://github.com/weppos/tabs_on_rails.git
 
 Warning: this method is deprecated and will be removed in a future version.
-Use Bundler and the {:git option}[http://gembundler.com/v1.0/git.html]
+Use {Bundler}[http://gembundler.com]
+and the {:git option}[http://gembundler.com/v1.0/git.html]
 if you want to grab the latest version from the Git repository.
 
 
@@ -74,14 +75,15 @@ The example above produces the following HTML output.
 The usage is similar to the Rails route file.
 You create named tabs with the syntax <tt>tab.name_of_tab</tt>.
 
-The name you use creating a tab is the same you're going to refer to in your controller
-when you want to mark a tab as the current tab.
+The name you use creating a tab is the same you're going to refer to
+in your controller when you want to mark a tab as the current tab.
 
   class DashboardController < ApplicationController
     set_tab :dashboard
   end
 
-Now, if the action belongs to <tt>DashboardController</tt>, the template will automatically render the following HTML code.
+Now, if the action belongs to <tt>DashboardController</tt>,
+the template will automatically render the following HTML code.
 
   <ul>
     <li><a href="/">Homepage</a></li>
@@ -89,7 +91,8 @@ Now, if the action belongs to <tt>DashboardController</tt>, the template will au
     <li><a href="/account">Account</a></li>
   </ul>
 
-Use the <tt>current_tab</tt> helper method if you need to access the value of current tab in your controller or template.
+Use the <tt>current_tab</tt> helper method if you need to access
+the value of current tab in your controller or template.
 
   class DashboardController < ApplicationController
     set_tab :dashboard
@@ -314,7 +317,6 @@ This is the final result.
 * {Homepage}[http://www.simonecarletti.com/code/tabs_on_rails]
 * {Source}[http://github.com/weppos/tabs_on_rails]
 * {API Documentation}[http://www.simonecarletti.com/code/tabs_on_rails/api/]
-* {Wiki}[http://code.simonecarletti.com/projects/tabsonrails]
 * {Bugs & Features}[http://github.com/weppos/tabs_on_rails/issues]
 
 
