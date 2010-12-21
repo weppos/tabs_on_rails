@@ -67,6 +67,7 @@ class TabsTest < ActiveSupport::TestCase
     end
   end
 
+
   def test_close_tabs
     assert_equal '</ul>', @tabs.close_tabs
   end
