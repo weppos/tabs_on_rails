@@ -1,5 +1,6 @@
 .DS_Store
 .idea
-pkg
-doc
 coverage
+doc
+pkg
+rdoc
