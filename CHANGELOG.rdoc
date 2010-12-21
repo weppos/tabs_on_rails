@@ -5,6 +5,8 @@
 
 * CHANGED: Dropped support for Rails 2.
 
+* CHANGED: Remove "Incomplete `close_tabs' definition" warning. open_tabs/close_tabs can now have zero or more arguments.
+
 
 == Release 1.3.2
 
