@@ -82,7 +82,7 @@ module TabsOnRails
       # Implements Builder#close_tabs.
       #
       def close_tabs(options = {})
-        "</ul>".try(:html_safe)
+        "</ul>".html_safe
       end
 
     end

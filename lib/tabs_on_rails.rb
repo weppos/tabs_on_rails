@@ -26,3 +26,12 @@ module TabsOnRails
   GEM             = "tabs_on_rails"
 
 end
+
+# Compatibility with Rails 2
+unless "".respond_to?(:html_safe)
+  class String
+    def html_safe
+      self
+    end
+  end
+end

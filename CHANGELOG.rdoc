@@ -5,6 +5,8 @@
 
 * CHANGED: Use Bundler to declare dependencies.
 
+* FIXED: Some Rails 2 user can experience a NoMethodError: undefined method `html_safe'.
+
 
 == Release 1.3.1
 
