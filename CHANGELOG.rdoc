@@ -15,7 +15,7 @@
 
 == Release 1.3.0
 
-* ADDED: Ability to customize the behavior and the style of the li tab item
+* NEW: Ability to customize the behavior and the style of the li tab item
          passing a hash of options.
 
            <% tabs_tag do |tab| %>
@@ -32,7 +32,7 @@
 
 == Release 1.2.0
 
-* ADDED: Rails 3 compatibility.
+* NEW: Rails 3 compatibility.
 
 * CHANGED: Simplified tabs_tag helper by moving the rendering logic into TabsOnRails::Tabs#render.
 
@@ -56,7 +56,7 @@
 
 == Release 1.0.0
 
-* ADDED: Ability to pass arbitrary options to open_tabs and close_tags method. Thanks to aaronchi (closes #315)
+* NEW: Ability to pass arbitrary options to open_tabs and close_tags method. Thanks to aaronchi (closes #315)
 
 * REMOVED: tabs_tag no longer accepts a Builder as first parameter. Removed deprecation warning.
 
@@ -92,7 +92,7 @@ First stable release.
 
 == Release 0.3.0
 
-* ADDED: Support for namespaces in order to manage concurrent tab menus (closes #144).
+* NEW: Support for namespaces in order to manage concurrent tab menus (closes #144).
 
 * FIXED: `Uninitialized constant RAILS_DEFAULT_LOGGER (NameError)' error message when running tests outside a Rails environment.
 
@@ -105,7 +105,7 @@ First stable release.
 
 == Release 0.2.0
 
-* ADDED: The README file is definitely more useful now, filled up with some basic documentation.
+* NEW: The README file is definitely more useful now, filled up with some basic documentation.
 
 * CHANGED: Use the standard way to initialize a Rails plugin when packaged as a GEM (closes #146).
 
