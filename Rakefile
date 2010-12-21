@@ -111,17 +111,6 @@ rescue LoadError
   puts "RCov is not available"
 end
 
-begin
-  require "code_statistics"
-
-  desc "Show library's code statistics"
-  task :stats do
-    CodeStatistics.new(["TabsOnRails", "lib"],
-                       ["Tests", "test"]).to_s
-  end
-rescue LoadError
-  puts "CodeStatistics (Rails) is not available"
-end
 
 desc "Publish documentation to the site"
 task :publish_rdoc => [:clobber_rdoc, :rdoc] do
