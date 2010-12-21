@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TabsBuilderTest < ActionView::TestCase
-  tests TabsOnRails::ControllerMixin::HelperMethods
+  tests TabsOnRails::ActionController::HelperMethods
 
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::UrlHelper

@@ -1,1 +1,1 @@
-require "tabs_on_rails"
+require 'tabs_on_rails'

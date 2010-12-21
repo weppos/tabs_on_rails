@@ -14,10 +14,10 @@
 #++
 
 
-require 'tabs_on_rails/controller_mixin'
 require 'tabs_on_rails/tabs'
 require 'tabs_on_rails/version'
-
+require 'tabs_on_rails/action_controller'
+require 'tabs_on_rails/railtie'
 
 module TabsOnRails
 

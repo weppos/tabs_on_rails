@@ -22,7 +22,6 @@ TabsOnRails::Routes.draw do
 end
 
 ActionController::Base.send :include, TabsOnRails::Routes.url_helpers
-ActionController::Base.send :include, TabsOnRails::ControllerMixin
 
 class ActiveSupport::TestCase
   setup do

@@ -193,7 +193,7 @@ end
 
 
 class ControllerMixinHelpersTest < ActionView::TestCase
-  tests TabsOnRails::ControllerMixin::HelperMethods
+  tests TabsOnRails::ActionController::HelperMethods
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::UrlHelper
 

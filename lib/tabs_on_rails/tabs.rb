@@ -17,7 +17,6 @@
 require 'tabs_on_rails/tabs/builder'
 require 'tabs_on_rails/tabs/tabs_builder'
 
-
 module TabsOnRails
 
   class Tabs

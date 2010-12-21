@@ -16,7 +16,7 @@
 
 module TabsOnRails
 
-  module ControllerMixin
+  module ActionController
 
     def self.included(base)
       base.extend     ClassMethods
