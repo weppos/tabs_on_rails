@@ -27,7 +27,7 @@ module TabsOnRails
       @builder = (options.delete(:builder) || TabsBuilder).new(@context, options)
       @options = options
     end
-    
+
     %w(open_tabs close_tabs).each do |name|
       define_method(name) do |*args|                      # def open_tabs(*args)
         method = @builder.method(name)                    #   method = @builder.method(:open_tabs)
@@ -54,17 +54,11 @@ module TabsOnRails
       open_tabs_options  = options.delete(:open_tabs)  || {}
       close_tabs_options = options.delete(:close_tabs) || {}
 
-      if Railtie.rails_version < "3"
-        @context.concat(open_tabs(open_tabs_options).to_s)
-        yield self
-        @context.concat(close_tabs(close_tabs_options).to_s)
-      else
-        "".tap do |html|
-          html << open_tabs(open_tabs_options).to_s
-          html << @context.capture(self, &block)
-          html << close_tabs(close_tabs_options).to_s
-        end.html_safe
-      end
+      "".tap do |html|
+        html << open_tabs(open_tabs_options).to_s
+        html << @context.capture(self, &block)
+        html << close_tabs(close_tabs_options).to_s
+      end.html_safe
     end
 
   end
