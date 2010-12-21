@@ -56,6 +56,8 @@ spec = Gem::Specification.new do |s|
 
   # If your tests use any gems, include them here
   s.add_development_dependency("bundler")
+  s.add_development_dependency("rails", "~> 3.0.3")
+  s.add_development_dependency("mocha", "~> 0.9.10")
 end
 
 # This task actually builds the gem. We also regenerate a static
