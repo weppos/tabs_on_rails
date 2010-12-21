@@ -1,12 +1,7 @@
 require 'rubygems'
-gem     'rails', '~>2.3.5'
-gem     'mocha', '~>0.9.8'
+require 'bundler'
+Bundler.setup(:default, :test)
 
-# Remember! Due to some Mocha internal changes,
-# Rails 2.2.x requires Mocha 0.9.5 and
-# Rails 2.3.x requires Mocha 0.9.7 
-# gem     'rails', '2.2.2'
-# gem     'mocha', '0.9.5'
 
 require 'test/unit'
 require 'active_support'
