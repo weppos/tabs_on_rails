@@ -1,6 +1,11 @@
 = Changelog
 
 
+== master
+
+* CHANGED: Dropped support for Rails 2.
+
+
 == Release 1.3.2
 
 * CHANGED: Use Bundler to declare dependencies.
