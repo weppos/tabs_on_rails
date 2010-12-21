@@ -6,16 +6,10 @@ It provides helpers for generating navigation menus with a flexible interface.
 
 == Requirements
 
-* Ruby >= 1.8.6
-* Rails >= 2.2
-
-or
-
 * Rails 3
 
-Warning: *TabsOnRails* doesn't work with Rails 2.1 or previous versions
-(see {this comment}[http://www.simonecarletti.com/blog/2009/04/tabsonrails/#comment-2901]
-and {this commit}[http://github.com/weppos/tabs_on_rails/commit/d5ae9f401e3d0acc87251fa8957a8625e90ba4b3]).
+For Rails 2, use TabsOnRails 1.x.
+TabsOnRails doesn't work with Rails 2.1 or lower.
 
 
 == Installation
@@ -26,20 +20,7 @@ and {this commit}[http://github.com/weppos/tabs_on_rails/commit/d5ae9f401e3d0acc
 
   $ gem install tabs_on_rails
 
-With Rails >= 2.2, specify the Gem dependency in your <tt>environment.rb</tt> 
-file so that Rails will automatically check the requirement on startup.
-
-  Rails::Initializer.run do |config|
-    
-    # other configurations
-    # ...
-    
-    config.gem "tabs_on_rails"
-    
-  end
-
-With Rails 3, specify the Gem dependency in the 
-{Bundler}[http://gembundler.com] Gemfile.
+Specify the Gem dependency in the {Bundler}[http://gembundler.com] Gemfile.
 
   gem "tabs_on_rails"
 
@@ -190,12 +171,12 @@ Let's call it :navigation.
 
   class ProjectsController
     set_tab :projects
-  
+    
     # Create an other tab navigation level
     set_tab :first, :navigation, :only => %w(first)
     set_tab :second, :navigation, :only => %w(second)
     set_tab :third, :navigation, :only => %w(third)
-  
+    
     def first; end
     def second; end
     def third; end
