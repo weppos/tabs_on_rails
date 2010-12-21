@@ -13,6 +13,7 @@
 #
 #++
 
+require 'tabs_on_rails'
 require 'action_controller/base'
 
 module TabsOnRails

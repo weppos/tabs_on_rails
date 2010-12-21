@@ -8,11 +8,11 @@ rescue LoadError
 end
 
 $:.unshift(File.dirname(__FILE__) + "/lib")
-#require "tabs_on_rails"
+require "tabs_on_rails"
 
 
-PKG_NAME    = ENV['PKG_NAME']    || "tabs_on_rails" # TabsOnRails::GEM
-PKG_VERSION = ENV['PKG_VERSION'] || "0.0.0" # TabsOnRails::VERSION
+PKG_NAME    = ENV['PKG_NAME']    || TabsOnRails::GEM
+PKG_VERSION = ENV['PKG_VERSION'] || TabsOnRails::VERSION
 
 if ENV['SNAPSHOT'].to_i == 1
   PKG_VERSION << "." << Time.now.utc.strftime("%Y%m%d%H%M%S")
