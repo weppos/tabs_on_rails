@@ -1,7 +1,7 @@
 = Changelog
 
 
-== master
+== Release 2.0.0.pre
 
 * CHANGED: Dropped support for Rails 2.
 
