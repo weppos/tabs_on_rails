@@ -58,7 +58,7 @@ if you want to grab the latest version from the Git repository.
 
 In your template use the <tt>tabs_tag</tt> helper to create your tab.
 
-  <% tabs_tag do |tab| %>
+  <%= tabs_tag do |tab| %>
     <%= tab.home      'Homepage', root_path %>
     <%= tab.dashboard 'Dashboard', dashboard_path %>
     <%= tab.account   'Account', account_path %>
@@ -107,7 +107,7 @@ You can pass a hash of options to customize the style and the behavior of the ta
 Behind the scenes, each time you create a tab, the <tt>#tab_for</tt> 
 method is invoked.
 
-  <% tabs_tag do |tab| %>
+  <%= tabs_tag do |tab| %>
     <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
     <%= tab.dashboard 'Dashboard', dashboard_path %>
   <% end %>
@@ -124,7 +124,7 @@ See <tt>TabsOnRails::Tabs::TabsBuilder#tab_for</tt> for more details.
 
 The open_tabs and the close_tabs methods can be customized with the <tt>:open_tabs</tt> and <tt>:close_tabs</tt> option.
 
-  <% tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
+  <%= tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
     <%= tab.home      'Homepage', root_path %>
     <%= tab.dashboard 'Dashboard', dashboard_path %>
     <%= tab.account   'Account', account_path %>
@@ -213,13 +213,13 @@ The default namespace is called :default. Passing :default as name is the same a
 
 To switch namespace in your template, just pass the :namespace option to the <tt>tabs_tag</tt> helper method.
 
-  <% tabs_tag do |tab| %>
+  <%= tabs_tag do |tab| %>
     <%= tab.home      'Homepage', root_path %>
     <%= tab.dashboard 'Dashboard', dashboard_path %>
     <%= tab.projects  'Projects', projects_path %>
   <% end %>
 
-  <% tabs_tag :namespace => :navigation do |tab| %>
+  <%= tabs_tag :namespace => :navigation do |tab| %>
     <%= tab.first   'First', first_project_path %>
     <%= tab.second  'Second', second_project_path %>
     <%= tab.third   'Account', third_project_path %>
@@ -292,7 +292,7 @@ The following example creates a custom tab builder called <tt>MenuTabBuilder</tt
 
 In your view, simply pass the builder class to the <tt>tabs_tag</tt> method.
 
-  <% tabs_tag(:builder => MenuTabBuilder) do |tab| %>
+  <%= tabs_tag(:builder => MenuTabBuilder) do |tab| %>
     <%= tab.home        'Homepage', root_path %>
     <%= tab.dashboard,  'Dashboard', dashboard_path %>
     <%= tab.account     'Account', account_path, :style => 'float: right;' %>

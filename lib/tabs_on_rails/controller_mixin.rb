@@ -115,7 +115,7 @@ module TabsOnRails
 
       # In your template use the <tt>tabs_tag</tt> helper to create your tab.
       #
-      #   <% tabs_tag do |tab| %>
+      #   <%= tabs_tag do |tab| %>
       #     <%= tab.home      'Homepage', root_path %>
       #     <%= tab.dashboard 'Dashboard', dashboard_path %>
       #     <%= tab.account   'Account', account_path %>
@@ -164,7 +164,7 @@ module TabsOnRails
       # Behind the scenes, each time you create a tab, the <tt>#tab_for</tt> 
       # method is invoked.
       #
-      #   <% tabs_tag do |tab| %>
+      #   <%= tabs_tag do |tab| %>
       #     <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
       #     <%= tab.dashboard 'Dashboard', dashboard_path %>
       #   <% end %>
@@ -187,7 +187,7 @@ module TabsOnRails
       # The open_tabs and the close_tabs methods can be customized 
       # with the <tt>:open_tabs</tt> and <tt>:close_tabs</tt> option.
       #
-      #   <% tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
+      #   <%= tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
       #     <%= tab.home      'Homepage', root_path %>
       #     <%= tab.dashboard 'Dashboard', dashboard_path %>
       #     <%= tab.account   'Account', account_path %>

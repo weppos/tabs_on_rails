@@ -18,7 +18,7 @@
 * ADDED: Ability to customize the behavior and the style of the li tab item
          passing a hash of options.
 
-           <% tabs_tag do |tab| %>
+           <%= tabs_tag do |tab| %>
              <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
              <%= tab.dashboard 'Dashboard', dashboard_path %>
            <% end %>
