@@ -19,20 +19,6 @@ if ENV['SNAPSHOT'].to_i == 1
 end
 
 
-# Run all the tests in the /test folder
-Rake::TestTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList["test/**/*_test.rb"]
-  t.verbose = true
-end
-
-# Generate documentation
-Rake::RDocTask.new do |rd|
-  rd.main = "README.rdoc"
-  rd.rdoc_files.include("*.rdoc", "lib/**/*.rb")
-  rd.rdoc_dir = "rdoc"
-end
-
 # Run test by default.
 task :default => ["test"]
 
@@ -96,6 +82,22 @@ task :clobber => [:clobber_rdoc, :clobber_rcov, :clobber_package]
 
 desc "Package the library and generates the gemspec"
 task :package => [:gemspec]
+
+
+# Run all the tests in the /test folder
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList["test/**/*_test.rb"]
+  t.verbose = true
+end
+
+# Generate documentation
+Rake::RDocTask.new do |rd|
+  rd.main = "README.rdoc"
+  rd.rdoc_files.include("*.rdoc", "lib/**/*.rb")
+  rd.rdoc_dir = "rdoc"
+end
+
 
 begin
   require "rcov/rcovtask"
