@@ -28,7 +28,6 @@ task :default => ["test"]
 #   http://rubygems.org/read/chapter/20
 #
 spec = Gem::Specification.new do |s|
-
   s.name              = PKG_NAME
   s.version           = PKG_VERSION
   s.summary           = "A simple Ruby on Rails plugin for creating and managing Tabs."
@@ -47,7 +46,7 @@ spec = Gem::Specification.new do |s|
   s.rdoc_options      = %w(--main README.rdoc)
 
   # Add any extra files to include in the gem (like your README)
-  s.files             = %w( Rakefile init.rb ) + Dir.glob("*.{rdoc,gemspec}") + Dir.glob("{test,lib,rails}/**/*")
+  s.files             = %w( Rakefile LICENSE init.rb ) + Dir.glob("*.{rdoc,gemspec}") + Dir.glob("{test,lib,rails}/**/*")
   s.require_paths     = ["lib"]
 
   # If you want to depend on other gems, add them here, along with any
