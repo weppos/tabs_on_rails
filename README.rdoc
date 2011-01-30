@@ -8,31 +8,24 @@ It provides helpers for generating navigation menus with a flexible interface.
 
 * Rails 3
 
-For Rails 2, use TabsOnRails 1.x.
-TabsOnRails doesn't work with Rails 2.1 or lower.
+Please note 
+
+* TabsOnRails 2.x requires Rails 3. Use TabsOnRails 1.3.x with Rails 2.
+* TabsOnRails doesn't work with Rails 2.1 or lower
+("comment":http://www.simonecarletti.com/blog/2009/04/tabsonrails/#comment-2901 and "commit":http://github.com/weppos/tabs_on_rails/commit/d5ae9f401e3d0acc87251fa8957a8625e90ba4b3).
 
 
 == Installation
 
-=== As a Gem
-
-{RubyGems}[http://rubygems.org] is the preferred way to install *TabsOnRails* and the best way if you want install a stable version.
+"RubyGems":http://rubygems.org is the preferred way to install *TabsOnRails* and the best way if you want install a stable version.
 
   $ gem install tabs_on_rails
 
-Specify the Gem dependency in the {Bundler}[http://gembundler.com] Gemfile.
+Specify the Gem dependency in the "Bundler":http://gembundler.com Gemfile.
 
   gem "tabs_on_rails"
 
-
-=== As a Plugin
-
-  $ script/plugin install git://github.com/weppos/tabs_on_rails.git
-
-Warning: this method is deprecated and will be removed in a future version.
-Use {Bundler}[http://gembundler.com]
-and the {:git option}[http://gembundler.com/v1.0/git.html]
-if you want to grab the latest version from the Git repository.
+Use "Bundler":http://gembundler.com and the ":git option":http://gembundler.com/v1.0/git.html if you want to grab the latest version from the Git repository.
 
 
 == Usage
