@@ -111,7 +111,6 @@ begin
   end
 rescue LoadError
   task :clobber_rcov
-  puts "RCov is not available"
 end
 
 
