@@ -14,24 +14,14 @@
 #++
 
 
-require 'tabs_on_rails/controller_mixin'
 require 'tabs_on_rails/tabs'
-require 'tabs_on_rails/railtie'
 require 'tabs_on_rails/version'
-
+require 'tabs_on_rails/action_controller'
+require 'tabs_on_rails/railtie'
 
 module TabsOnRails
 
   NAME            = "Tabs on Rails"
   GEM             = "tabs_on_rails"
 
-end
-
-# Compatibility with Rails 2
-unless "".respond_to?(:html_safe)
-  class String
-    def html_safe
-      self
-    end
-  end
 end

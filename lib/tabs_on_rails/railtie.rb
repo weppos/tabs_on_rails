@@ -17,28 +17,22 @@
 module TabsOnRails
 
   if defined? Rails::Railtie
-    require "rails"
-
-    class Railtie < Rails::Railtie
-      initializer "tabs_on_rails.initialize" do
-        ActiveSupport.on_load :action_controller do
-          TabsOnRails::Railtie.init
-        end
-      end
+    class Railtie < ::Rails::Railtie
+      # initializer "tabs_on_rails.initialize" do
+      #   ActiveSupport.on_load :action_controller do
+      #     ::ActionController::Base.send :include, TabsOnRails::ActionController
+      #   end
+      # end
     end
-
-  end
-
-  class Railtie
-
-    def self.rails_version
-      @@rails_version ||= Rails::VERSION::STRING rescue "2.2"
-    end
-
-    def self.init
-      ActionController::Base.send :include, TabsOnRails::ControllerMixin
-    end
-
   end
 
 end
+
+require "active_support"
+require "action_controller"
+
+# There should be a better way to do this!
+# I can't rely on Railtie#initializer because TabsOnRails::ActionController
+# provides class methods which should be available when the class
+# is evaluated.
+ActionController::Base.send :include, TabsOnRails::ActionController
