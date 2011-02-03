@@ -1,6 +1,11 @@
 = Changelog
 
 
+== Release 2.0.0.pre2
+
+* FIXED: Fixed permission error (#8)
+
+
 == Release 2.0.0.pre
 
 * CHANGED: Dropped support for Rails 2.
