@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tabs_on_rails (2.0.0.pre)
+    tabs_on_rails (2.0.0.pre2)
 
 GEM
   remote: http://rubygems.org/
@@ -44,7 +44,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    mocha (0.9.10)
+    mocha (0.9.11)
       rake
     polyglot (0.3.1)
     rack (1.2.1)
