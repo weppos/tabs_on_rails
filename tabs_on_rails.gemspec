@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tabs_on_rails}
-  s.version = "2.0.0"
+  s.version = "2.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simone Carletti"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 }
   s.email = %q{weppos@weppos.net}
   s.extra_rdoc_files = ["CHANGELOG.rdoc", "README.rdoc"]
-  s.files = ["Rakefile", "LICENSE", "init.rb", "CHANGELOG.rdoc", "README.rdoc", "tabs_on_rails.gemspec", "lib/tabs_on_rails", "lib/tabs_on_rails/action_controller.rb", "lib/tabs_on_rails/railtie.rb", "lib/tabs_on_rails/tabs", "lib/tabs_on_rails/tabs/builder.rb", "lib/tabs_on_rails/tabs/tabs_builder.rb", "lib/tabs_on_rails/tabs.rb", "lib/tabs_on_rails/version.rb", "lib/tabs_on_rails.rb", "test/tabs_on_rails", "test/tabs_on_rails/controller_mixin_test.rb", "test/tabs_on_rails/tabs", "test/tabs_on_rails/tabs/builder_test.rb", "test/tabs_on_rails/tabs/tabs_builder_test.rb", "test/tabs_on_rails/tabs_test.rb", "test/test_helper.rb", "test/views", "test/views/working", "test/views/working/default.html.erb", "test/views/working/with_item_options.html.erb", "test/views/working/with_open_close_tabs.html.erb"]
+  s.files = ["Rakefile", "LICENSE", "init.rb", ".gemtest", "CHANGELOG.rdoc", "README.rdoc", "tabs_on_rails.gemspec", "lib/tabs_on_rails/action_controller.rb", "lib/tabs_on_rails/railtie.rb", "lib/tabs_on_rails/tabs/builder.rb", "lib/tabs_on_rails/tabs/tabs_builder.rb", "lib/tabs_on_rails/tabs.rb", "lib/tabs_on_rails/version.rb", "lib/tabs_on_rails.rb", "test/tabs_on_rails/controller_mixin_test.rb", "test/tabs_on_rails/tabs/builder_test.rb", "test/tabs_on_rails/tabs/tabs_builder_test.rb", "test/tabs_on_rails/tabs_test.rb", "test/test_helper.rb", "test/views/working/default.html.erb", "test/views/working/with_item_options.html.erb", "test/views/working/with_open_close_tabs.html.erb"]
   s.homepage = %q{http://www.simonecarletti.com/code/tabs_on_rails}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]

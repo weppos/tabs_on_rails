@@ -1,6 +1,11 @@
 = Changelog
 
 
+== Release 2.0.1
+
+* NEW: Added support for rubygems-test.
+
+
 == Release 2.0.0
 
 Nothing changed. No longer a --pre release.
