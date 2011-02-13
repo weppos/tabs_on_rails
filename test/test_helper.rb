@@ -1,6 +1,5 @@
 require 'rubygems'
-require 'bundler'
-Bundler.setup
+require 'bundler/setup'
 
 require 'test/unit'
 require 'mocha'

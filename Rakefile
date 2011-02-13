@@ -1,17 +1,17 @@
-require "rubygems"
-require "rake/testtask"
-require "rake/gempackagetask"
+require 'rubygems'
+require 'rake/testtask'
+require 'rake/gempackagetask'
 begin
-  require "hanna/rdoctask"
+  require 'hanna/rdoctask'
 rescue LoadError
-  require "rake/rdoctask"
+  require 'rake/rdoctask'
 end
 
-$:.unshift(File.dirname(__FILE__) + "/lib")
-require "tabs_on_rails"
+$:.unshift(File.dirname(__FILE__) + '/lib')
+require 'tabs_on_rails/version'
 
 
-PKG_NAME    = ENV['PKG_NAME']    || TabsOnRails::GEM
+PKG_NAME    = ENV['PKG_NAME']    || "tabs_on_rails"
 PKG_VERSION = ENV['PKG_VERSION'] || TabsOnRails::VERSION
 
 if ENV['SNAPSHOT'].to_i == 1
@@ -20,7 +20,7 @@ end
 
 
 # Run test by default.
-task :default => ["test"]
+task :default => :test
 
 # This builds the actual gem. For details of what all these options
 # mean, and other ones you can add, check the documentation here:
@@ -46,7 +46,7 @@ spec = Gem::Specification.new do |s|
   s.rdoc_options      = %w(--main README.rdoc)
 
   # Add any extra files to include in the gem (like your README)
-  s.files             = %w( Rakefile LICENSE init.rb ) + Dir.glob("*.{rdoc,gemspec}") + Dir.glob("{test,lib,rails}/**/*")
+  s.files             = %w( Rakefile LICENSE init.rb .gemtest ) + Dir.glob("*.{rdoc,gemspec}") + Dir.glob("{lib,test,rails}/**/*")
   s.require_paths     = ["lib"]
 
   # If you want to depend on other gems, add them here, along with any
@@ -55,7 +55,7 @@ spec = Gem::Specification.new do |s|
 
   # If your tests use any gems, include them here
   s.add_development_dependency("bundler")
-  s.add_development_dependency("rails", "~> 3.0.3")
+  s.add_development_dependency("rails", "3.0.3")
   s.add_development_dependency("mocha", "~> 0.9.10")
 end
 
