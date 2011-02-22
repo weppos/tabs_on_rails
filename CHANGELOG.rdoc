@@ -1,6 +1,10 @@
 = Changelog
 
 
+== Release 1.3.3
+
+* FIXED: Permission error (see http://stackoverflow.com/questions/5085174/rails-gem-permissions-problem-tabs-on-rails)
+
 == Release 1.3.2
 
 * CHANGED: Use Bundler to declare dependencies.
