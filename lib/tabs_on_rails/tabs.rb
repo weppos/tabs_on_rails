@@ -39,7 +39,11 @@ module TabsOnRails
     end
     
     def method_missing(*args)
-      @builder.tab_for(*args)
+      if block_given?
+        @builder.tab_for(*args, &Proc.new)
+      else
+        @builder.tab_for(*args)
+      end
     end
 
     def render(&block)
