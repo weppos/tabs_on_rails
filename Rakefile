@@ -1,11 +1,8 @@
 require 'rubygems'
+require 'bundler'
 require 'rake/testtask'
 require 'rake/gempackagetask'
-begin
-  require 'hanna/rdoctask'
-rescue LoadError
-  require 'rake/rdoctask'
-end
+require 'hanna/rdoctask'
 
 $:.unshift(File.dirname(__FILE__) + '/lib')
 require 'tabs_on_rails/version'
@@ -30,14 +27,12 @@ task :default => :test
 spec = Gem::Specification.new do |s|
   s.name              = PKG_NAME
   s.version           = PKG_VERSION
-  s.summary           = "A simple Ruby on Rails plugin for creating and managing Tabs."
+  s.summary           = "A simple Ruby on Rails plugin for creating tabs and navigation menus."
+  s.description       = "TabsOnRails is a simple Rails plugin for creating tabs and navigation menus."
+
   s.author            = "Simone Carletti"
   s.email             = "weppos@weppos.net"
   s.homepage          = "http://www.simonecarletti.com/code/tabs_on_rails"
-  s.description       = <<-EOD
-    TabsOnRails is a simple Ruby on Rails plugin for creating and managing Tabs. \
-    It provides helpers for creating tabs with a flexible interface.
-  EOD
 
   s.has_rdoc          = true
   # You should probably have a README of some kind. Change the filename
@@ -47,7 +42,7 @@ spec = Gem::Specification.new do |s|
 
   # Add any extra files to include in the gem (like your README)
   s.files             = %w( Rakefile LICENSE init.rb .gemtest ) + Dir.glob("*.{rdoc,gemspec}") + Dir.glob("{lib,test,rails}/**/*")
-  s.require_paths     = ["lib"]
+  s.require_paths     = %w( lib )
 
   # If you want to depend on other gems, add them here, along with any
   # relevant versions
@@ -55,7 +50,8 @@ spec = Gem::Specification.new do |s|
 
   # If your tests use any gems, include them here
   s.add_development_dependency("bundler")
-  s.add_development_dependency("rails", "3.0.3")
+  s.add_development_dependency("hanna")
+  s.add_development_dependency("rails", "~> 3.0.5")
   s.add_development_dependency("mocha", "~> 0.9.10")
 end
 
@@ -97,20 +93,6 @@ Rake::RDocTask.new do |rd|
   rd.main = "README.rdoc"
   rd.rdoc_files.include("*.rdoc", "lib/**/*.rb")
   rd.rdoc_dir = "rdoc"
-end
-
-
-begin
-  require "rcov/rcovtask"
-
-  desc "Create a code coverage report"
-  Rcov::RcovTask.new do |t|
-    t.test_files = FileList["test/**/*_test.rb"]
-    t.ruby_opts << "-Itest -x mocha,rcov,Rakefile"
-    t.verbose = true
-  end
-rescue LoadError
-  task :clobber_rcov
 end
 
 
