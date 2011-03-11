@@ -1,6 +1,4 @@
-.DS_Store
+.bundle
 .idea
-coverage
-doc
-pkg
+pkg/*
 rdoc
