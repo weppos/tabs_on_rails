@@ -1,6 +1,11 @@
 = Changelog
 
 
+== master
+
+* CHANGED: Removed deprecated #has_rdoc= RubyGems attribute.
+
+
 == Release 2.0.1
 
 * NEW: Added support for rubygems-test.

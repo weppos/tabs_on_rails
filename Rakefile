@@ -34,7 +34,6 @@ spec = Gem::Specification.new do |s|
   s.email             = "weppos@weppos.net"
   s.homepage          = "http://www.simonecarletti.com/code/tabs_on_rails"
 
-  s.has_rdoc          = true
   # You should probably have a README of some kind. Change the filename
   # as appropriate
   s.extra_rdoc_files  = Dir.glob("*.rdoc")
