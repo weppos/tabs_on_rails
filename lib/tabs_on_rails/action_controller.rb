@@ -17,14 +17,13 @@
 module TabsOnRails
 
   module ActionController
+    extend ActiveSupport::Concern
 
-    def self.included(base)
-      base.extend     ClassMethods
-      base.class_eval do
-        include       InstanceMethods
-        helper        HelperMethods
-        helper_method :current_tab, :current_tab?
-      end
+    included do
+      extend        ClassMethods
+      include       InstanceMethods
+      helper        HelperMethods
+      helper_method :current_tab, :current_tab?
     end
 
     module ClassMethods
