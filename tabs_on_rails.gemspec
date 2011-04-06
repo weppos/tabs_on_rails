@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simone Carletti"]
-  s.date = %q{2011-03-11}
+  s.date = %q{2011-04-06}
   s.description = %q{TabsOnRails is a simple Rails plugin for creating tabs and navigation menus.}
   s.email = %q{weppos@weppos.net}
   s.extra_rdoc_files = ["CHANGELOG.rdoc", "README.rdoc"]
@@ -23,18 +23,18 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<hanna>, [">= 0"])
-      s.add_development_dependency(%q<rails>, ["~> 3.0.5"])
+      s.add_development_dependency(%q<rails>, ["~> 3.0.6"])
       s.add_development_dependency(%q<mocha>, ["~> 0.9.10"])
     else
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<hanna>, [">= 0"])
-      s.add_dependency(%q<rails>, ["~> 3.0.5"])
+      s.add_dependency(%q<rails>, ["~> 3.0.6"])
       s.add_dependency(%q<mocha>, ["~> 0.9.10"])
     end
   else
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<hanna>, [">= 0"])
-    s.add_dependency(%q<rails>, ["~> 3.0.5"])
+    s.add_dependency(%q<rails>, ["~> 3.0.6"])
     s.add_dependency(%q<mocha>, ["~> 0.9.10"])
   end
 end
