@@ -27,7 +27,7 @@ class BuilderTest < ActiveSupport::TestCase
   def test_initialize_without_context
     assert_raise(ArgumentError) { TabsOnRails::Tabs::Builder.new }
   end
-  
+
   def test_initialize_with_context
     assert_nothing_raised { TabsOnRails::Tabs::Builder.new(@template) }
   end

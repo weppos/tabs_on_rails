@@ -43,11 +43,6 @@ spec = Gem::Specification.new do |s|
   s.files             = %w( Rakefile LICENSE init.rb .gemtest ) + Dir.glob("*.{rdoc,gemspec}") + Dir.glob("{lib,test,rails}/**/*")
   s.require_paths     = %w( lib )
 
-  # If you want to depend on other gems, add them here, along with any
-  # relevant versions
-  # s.add_dependency("some_other_gem", "~> 0.1.0")
-
-  # If your tests use any gems, include them here
   s.add_development_dependency("bundler")
   s.add_development_dependency("hanna")
   s.add_development_dependency("rails", "~> 3.0.6")

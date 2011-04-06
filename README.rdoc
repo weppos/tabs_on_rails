@@ -296,5 +296,5 @@ This is the final result.
 
 == License
 
-*TabsOnRails* is Copyright (c) 2009-2011 Simone Carletti.
+TabsOnRails is Copyright (c) 2009-2011 Simone Carletti.
 This is Free Software distributed under the MIT license.
