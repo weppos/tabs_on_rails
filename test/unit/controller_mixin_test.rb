@@ -113,6 +113,18 @@ class WorkingMixinTestController < ActionController::Base
       end
     end
 
+
+  class BlockBuilder < TabsOnRails::Tabs::TabsBuilder
+    def tab_for(tab, name, options, item_options = {}, &block)
+      item_options[:class] = item_options[:class].to_s.split(" ").push("current").join(" ") if current_tab?(tab)
+      content  = @context.link_to_unless(current_tab?(tab), name, options) do
+        @context.content_tag(:span, name)
+      end
+      content += @context.capture(&block) if block_given?
+      @context.content_tag(:li, content, item_options)
+    end
+  end
+
 end
 
 class WorkingMixinTest < ActionController::TestCase
@@ -140,6 +152,15 @@ class WorkingMixinTest < ActionController::TestCase
   <li class="custom current"><span>Dashboard</span></li>
   <li class="custom"><a href="/w">Welcome</a></li>
 </ul>}, @response.body)
+  end
+
+  def test_render_with_item_block
+    get :action_dashboard, :template => "with_item_block"
+    assert_dom_equal(%Q{<ul>
+  <li class="custom current"><span>Dashboard</span></li>
+  <li class="custom"><a href="/w">Welcome</a>
+  <img src="#image" />
+</li></ul>}, @response.body)
   end
 
 

@@ -3,6 +3,12 @@
 
 == master
 
+* NEW: Added support for nested tabs and ability
+  to pass a block to the #tab_for method (#12, #9, #11).
+
+  However, the default TabsBuilder builder does not implement it.
+  Create a custom builder and specify how the block should be rendered.
+
 * CHANGED: Removed deprecated #has_rdoc= RubyGems attribute.
 
 

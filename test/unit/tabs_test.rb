@@ -30,6 +30,15 @@ class TabsTest < ActiveSupport::TestCase
     end
   end
 
+  BlockBuilder = Class.new(TabsOnRails::Tabs::Builder) do
+    def tab_for(tab, name, options, item_options = {}, &block)
+      item_options[:class] = item_options[:class].to_s.split(" ").push("current").join(" ") if current_tab?(tab)
+      content  = @context.link_to(name, options)
+      content += @context.capture(&block) if block_given?
+      @context.content_tag(:li, content, item_options)
+    end
+  end
+
 
   def setup
     @template = Template.new
@@ -81,6 +90,12 @@ class TabsTest < ActiveSupport::TestCase
     assert_nothing_raised do 
       assert_equal '</ul>', @tabs.close_tabs(:class => "foo")
     end
+  end
+
+
+  def test_tab_for
+    assert_equal %Q{<li><a href="#">Welcome</a></li>},
+                 @tabs.welcome('Welcome', '#')
   end
 
 end

@@ -1,0 +1,6 @@
+<%= tabs_tag(:builder => WorkingMixinTestController::BlockBuilder) do |tabs| %>
+  <%= tabs.dashboard 'Dashboard', '/d', :class => "custom" %>
+  <%= tabs.welcome 'Welcome', '/w', :class => "custom" do %>
+  <img src="#image" />
+  <% end %>
+<% end %>
