@@ -38,8 +38,8 @@ module TabsOnRails
       end                                                 # end
     end
     
-    def method_missing(*args)
-      @builder.tab_for(*args)
+    def method_missing(*args, &block)
+      @builder.tab_for(*args, &block)
     end
 
     def render(&block)
