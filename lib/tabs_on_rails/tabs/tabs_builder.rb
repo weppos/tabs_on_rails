@@ -1,8 +1,8 @@
-# 
+#
 # = Tabs on Rails
 #
 # A simple Ruby on Rails plugin for creating and managing Tabs.
-# 
+#
 #
 # Category::    Rails
 # Package::     TabsOnRails
@@ -19,22 +19,22 @@ module TabsOnRails
 
     #
     # = Tabs Builder
-    # 
+    #
     # The TabsBuilder is and example of custom Builder.
     #
     class TabsBuilder < Builder
 
       # Returns a link_to +tab+ with +name+ and +options+ if +tab+ is not the current tab,
       # a simple tab name wrapped by a span tag otherwise.
-      # 
+      #
       #   current_tab? :foo   # => true
-      # 
+      #
       #   tab_for :foo, 'Foo', foo_path
       #   # => "<li class="current"><span>Foo</span></li>"
-      # 
+      #
       #   tab_for :bar, 'Bar', bar_path
       #   # => "<li><a href="/link/to/bar">Bar</a></li>"
-      # 
+      #
       # You can pass a hash of <tt>item_options</tt>
       # to customize the behavior and the style of the li element.
       #

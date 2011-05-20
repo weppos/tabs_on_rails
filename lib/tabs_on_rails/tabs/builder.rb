@@ -1,8 +1,8 @@
-# 
+#
 # = Tabs on Rails
 #
 # A simple Ruby on Rails plugin for creating and managing Tabs.
-# 
+#
 #
 # Category::    Rails
 # Package::     TabsOnRails
@@ -17,14 +17,14 @@
 module TabsOnRails
   class Tabs
 
-    # 
+    #
     # = Builder
     #
     # The Builder class represents the interface for any custom Builder.
-    # 
+    #
     # To create a custom Builder, extend this class
     # and implement the following abstract methods:
-    # 
+    #
     # * <tt>tab_for</tt>
     #
     # Optionally, you can override the following methods to customize
@@ -48,11 +48,11 @@ module TabsOnRails
       # Returns true if +tab+ is the +current_tab+.
       #
       # Examples
-      # 
+      #
       #   class MyController < ApplicationController
       #     tab :foo
       #   end
-      # 
+      #
       #   current_tab? :foo   # => true
       #   current_tab? 'foo'  # => true
       #   current_tab? :bar   # => false

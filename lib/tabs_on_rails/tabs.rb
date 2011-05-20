@@ -1,8 +1,8 @@
-# 
+#
 # = Tabs on Rails
 #
 # A simple Ruby on Rails plugin for creating and managing Tabs.
-# 
+#
 #
 # Category::    Rails
 # Package::     TabsOnRails
@@ -37,7 +37,7 @@ module TabsOnRails
         end                                               #   end
       end                                                 # end
     end
-    
+
     def method_missing(*args, &block)
       @builder.tab_for(*args, &block)
     end
