@@ -42,6 +42,10 @@ module TabsOnRails
       @builder.tab_for(*args, &block)
     end
 
+
+    # Renders the tab stack using the current builder.
+    #
+    # Returns the String HTML content.
     def render(&block)
       raise LocalJumpError, "no block given" unless block_given?
 
