@@ -1,8 +1,8 @@
 require 'rubygems'
+require 'rubygems/package_task'
 require 'bundler'
 require 'rake/testtask'
-require 'rake/gempackagetask'
-require 'hanna/rdoctask'
+require 'rdoc/task'
 
 $:.unshift(File.dirname(__FILE__) + '/lib')
 require 'tabs_on_rails/version'
@@ -44,7 +44,7 @@ spec = Gem::Specification.new do |s|
   s.require_paths     = %w( lib )
 
   s.add_development_dependency("bundler")
-  s.add_development_dependency("hanna")
+  s.add_development_dependency("hanna-nouveau")
   s.add_development_dependency("rails", "~> 3.0.6")
   s.add_development_dependency("mocha", "~> 0.9.10")
 end
@@ -53,7 +53,7 @@ end
 # .gemspec file, which is useful if something (i.e. GitHub) will
 # be automatically building a gem for this project. If you're not
 # using GitHub, edit as appropriate.
-Rake::GemPackageTask.new(spec) do |pkg|
+Gem::PackageTask.new(spec) do |pkg|
   pkg.gem_spec = spec
 end
 
@@ -83,10 +83,11 @@ Rake::TestTask.new do |t|
 end
 
 # Generate documentation
-Rake::RDocTask.new do |rd|
-  rd.main = "README.rdoc"
-  rd.rdoc_files.include("*.rdoc", "lib/**/*.rb")
-  rd.rdoc_dir = "rdoc"
+RDoc::Task.new do |rdoc|
+  rdoc.main = "README.rdoc"
+  rdoc.rdoc_files.include("*.rdoc", "lib/**/*.rb")
+  rdoc.rdoc_dir = "rdoc"
+  rdoc.generator = 'hanna'
 end
 
 
