@@ -1,7 +1,7 @@
 = Changelog
 
 
-== master
+== Release 2.0.2
 
 * NEW: Added support for nested tabs and ability
   to pass a block to the #tab_for method (#12, #9, #11).
