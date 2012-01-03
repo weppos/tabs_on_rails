@@ -254,6 +254,14 @@ Additional overridable methods include:
 The following example creates a custom tab builder called <tt>MenuTabBuilder</tt>.
 
   class MenuTabBuilder < TabsOnRails::Tabs::Builder
+    def open_tabs(options = {})
+      @context.tag("ul", options, open = true)
+    end
+
+    def close_tabs(options = {})
+      "</ul>".html_safe
+    end
+
     def tab_for(tab, name, options, item_options = {})
       item_options[:class] = (current_tab?(tab) ? 'active' : '')
       @context.content_tag(:li, item_options) do
