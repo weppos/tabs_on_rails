@@ -46,7 +46,7 @@ module TabsOnRails
       #
       def tab_for(tab, name, options, item_options = {})
         item_options[:class] = item_options[:class].to_s.split(" ").push("current").join(" ") if current_tab?(tab)
-        content = @context.link_to_unless(current_tab?(tab), name, options) do
+        content = @context.link_to_unless(current_tab?(tab), name, options, :remote => true) do
           @context.content_tag(:span, name)
         end
         @context.content_tag(:li, content, item_options)
