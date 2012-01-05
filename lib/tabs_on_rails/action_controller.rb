@@ -179,7 +179,7 @@ module TabsOnRails
       #
       #   <ul>
       #     <li style="padding: 10px"><a href="/">Homepage</a></li>
-      #     <li class="custom"><span>Dashboard</span></li>
+      #     <li class="current"><span>Dashboard</span></li>
       #     <li><a href="/account">Account</a></li>
       #   </ul>
       #
