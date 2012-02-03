@@ -12,8 +12,8 @@ module TabsOnRails
   # Holds information about library version.
   module Version
     MAJOR = 2
-    MINOR = 0
-    PATCH = 2
+    MINOR = 1
+    PATCH = 0
     BUILD = nil
 
     STRING = [MAJOR, MINOR, PATCH, BUILD].compact.join(".")
