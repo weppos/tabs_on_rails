@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler'
+require 'appraisal'
 
 $:.unshift(File.dirname(__FILE__) + '/lib')
 require 'tabs_on_rails/version'
@@ -26,9 +27,8 @@ spec = Gem::Specification.new do |s|
   s.files             = %w( Rakefile LICENSE init.rb .gemtest ) + Dir.glob("*.{rdoc,gemspec}") + Dir.glob("{lib,test,rails}/**/*")
   s.require_paths     = %w( lib )
 
-  s.add_development_dependency "rake"
-  s.add_development_dependency "bundler"
-  s.add_development_dependency "rails", "~> 3.0.6"
+  s.add_development_dependency "rails", ">= 3.0"
+  s.add_development_dependency "appraisal"
   s.add_development_dependency "mocha", "~> 0.9.10"
   s.add_development_dependency "yard"
 end
@@ -63,7 +63,8 @@ require 'rake/testtask'
 Rake::TestTask.new do |t|
   t.libs << "test"
   t.test_files = FileList["test/**/*_test.rb"]
-  t.verbose = true
+  t.verbose = !!ENV["VERBOSE"]
+  t.warning = !!ENV["WARNING"]
 end
 
 

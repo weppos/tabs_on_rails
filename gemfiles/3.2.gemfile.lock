@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: /Users/weppos/Code/tabs_on_rails
   specs:
     tabs_on_rails (2.0.2)
 
@@ -92,6 +92,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord (~> 3.2)
   appraisal
   mocha (~> 0.9.10)
   rails (>= 3.0)
