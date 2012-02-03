@@ -1,6 +1,11 @@
 # Changelog
 
 
+## Release 2.1.1
+
+* FIXED: An invalid replace command caused a bug in 2.1.0.
+
+
 ## Release 2.1.0
 
 * NEW: Support for Rails 3.2.

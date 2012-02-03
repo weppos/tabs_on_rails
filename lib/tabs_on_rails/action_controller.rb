@@ -61,7 +61,7 @@ module TabsOnRails
     #
     # Returns a Boolean.
     def current_tab?(name, namespace = nil)
-      current_tab(namespace).to_s ## name.to_s
+      current_tab(namespace).to_s == name.to_s
     end
 
     # Initializes and/or returns the tab stack.
@@ -156,7 +156,7 @@ module TabsOnRails
       #   # In your view
       #   <p>The name of current tab is <%= current_tab %>.</p>
       #
-      # ### Customizing a Tab
+      # === Customizing a Tab
       #
       # You can pass a hash of options to customize the style and the behavior of the tab item.
       # Behind the scenes, each time you create a tab, the <tt>#tab_for</tt> 
@@ -181,7 +181,7 @@ module TabsOnRails
       #
       # See <tt>TabsOnRails::Tabs::TabsBuilder#tab_for</tt> for more details.
       #
-      # ### Customizing open_tabs and close_tabs
+      # === Customizing open_tabs and close_tabs
       #
       # The open_tabs and the close_tabs methods can be customized 
       # with the <tt>:open_tabs</tt> and <tt>:close_tabs</tt> option.

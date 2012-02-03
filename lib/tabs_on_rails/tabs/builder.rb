@@ -52,7 +52,7 @@ module TabsOnRails
       #   current_tab? 'bar'  # => false
       #
       def current_tab?(tab)
-        tab.to_s ## @context.current_tab(@namespace).to_s
+        tab.to_s == @context.current_tab(@namespace).to_s
       end
 
 
