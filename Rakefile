@@ -1,7 +1,5 @@
 require 'rubygems'
-require 'rubygems/package_task'
 require 'bundler'
-require 'rake/testtask'
 
 $:.unshift(File.dirname(__FILE__) + '/lib')
 require 'tabs_on_rails/version'
@@ -35,10 +33,9 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency "yard"
 end
 
-# This task actually builds the gem. We also regenerate a static
-# .gemspec file, which is useful if something (i.e. GitHub) will
-# be automatically building a gem for this project. If you're not
-# using GitHub, edit as appropriate.
+
+require 'rubygems/package_task'
+
 Gem::PackageTask.new(spec) do |pkg|
   pkg.gem_spec = spec
 end
@@ -61,7 +58,8 @@ desc "Package the library and generates the gemspec"
 task :package => [:gemspec]
 
 
-# Run all the tests in the /test folder
+require 'rake/testtask'
+
 Rake::TestTask.new do |t|
   t.libs << "test"
   t.test_files = FileList["test/**/*_test.rb"]
