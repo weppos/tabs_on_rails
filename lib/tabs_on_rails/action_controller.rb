@@ -152,7 +152,7 @@ module TabsOnRails
       # 
       #   <ul>
       #     <li><a href="/">Homepage</a></li>
-      #     <li class="custom"><span>Dashboard</span></li>
+      #     <li class="current"><span>Dashboard</span></li>
       #     <li><a href="/account">Account</a></li>
       #   </ul>
       #
@@ -175,12 +175,13 @@ module TabsOnRails
       #   <%= tabs_tag do |tab| %>
       #     <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
       #     <%= tab.dashboard 'Dashboard', dashboard_path %>
+      #     <%= tab.account   'Account', account_path, :class => "custom" %>
       #   <% end %>
       #
       #   <ul>
       #     <li style="padding: 10px"><a href="/">Homepage</a></li>
-      #     <li class="custom"><span>Dashboard</span></li>
-      #     <li><a href="/account">Account</a></li>
+      #     <li class="current"><span>Dashboard</span></li>
+      #     <li class="custom"><a href="/account">Account</a></li>
       #   </ul>
       #
       # You can pass any option supported by the <li>content_tag</li> Rails helper.
