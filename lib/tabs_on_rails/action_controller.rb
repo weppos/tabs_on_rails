@@ -21,10 +21,65 @@ module TabsOnRails
 
     included do
       extend        ClassMethods
-      include       InstanceMethods
       helper        HelperMethods
       helper_method :current_tab, :current_tab?
     end
+
+    
+    protected
+
+    # Sets the value for current tab to given name.
+    # If you need to manage multiple tabs,
+    # then you can pass an optional namespace.
+    #
+    # Examples
+    #
+    #   set_tab :homepage
+    #   set_tab :dashboard, :menu
+    #
+    # Returns nothing.
+    def set_tab(name, namespace = nil)
+      tab_stack[namespace || :default] = name
+    end
+
+    # Returns the value for current tab in the default namespace,
+    # or nil if no tab has been set before.
+    # You can pass <tt>namespace</tt> to get the value
+    # of the current tab for a different namespace.
+    #
+    # Examples
+    #
+    #   current_tab           # => nil
+    #   current_tab :menu     # => nil
+    #
+    #   set_tab :homepage
+    #   set_tab :dashboard, :menu
+    #
+    #   current_tab           # => :homepage
+    #   current_tab :menu     # => :dashboard
+    #
+    # Returns the String/Symbol current tab.
+    def current_tab(namespace = nil)
+      tab_stack[namespace || :default]
+    end
+
+    # Checks if the current tab in <tt>namespace</tt>
+    # matches <tt>name</tt>.
+    #
+    # Returns a Boolean.
+    def current_tab?(name, namespace = nil)
+      current_tab(namespace).to_s == name.to_s
+    end
+
+    # Initializes and/or returns the tab stack.
+    # You won't probably need to use this method directly
+    # unless you are trying to hack the plugin architecture.
+    #
+    # Returns the Hash stack.
+    def tab_stack
+      @tab_stack ||= {}
+    end
+
 
     module ClassMethods
 
@@ -59,64 +114,6 @@ module TabsOnRails
           controller.send(:set_tab, name, namespace)
         end
       end
-
-    end
-
-    module InstanceMethods
-      protected
-
-        # Sets the value for current tab to given name.
-        # If you need to manage multiple tabs,
-        # then you can pass an optional namespace.
-        #
-        # Examples
-        #
-        #   set_tab :homepage
-        #   set_tab :dashboard, :menu
-        #
-        # Returns nothing.
-        def set_tab(name, namespace = nil)
-          tab_stack[namespace || :default] = name
-        end
-
-        # Returns the value for current tab in the default namespace,
-        # or nil if no tab has been set before.
-        # You can pass <tt>namespace</tt> to get the value
-        # of the current tab for a different namespace.
-        #
-        # Examples
-        #
-        #   current_tab           # => nil
-        #   current_tab :menu     # => nil
-        #
-        #   set_tab :homepage
-        #   set_tab :dashboard, :menu
-        #
-        #   current_tab           # => :homepage
-        #   current_tab :menu     # => :dashboard
-        #
-        # Returns the String/Symbol current tab.
-        def current_tab(namespace = nil)
-          tab_stack[namespace || :default]
-        end
-
-        # Checks if the current tab in <tt>namespace</tt>
-        # matches <tt>name</tt>.
-        #
-        # Returns a Boolean.
-        def current_tab?(name, namespace = nil)
-          current_tab(namespace).to_s == name.to_s
-        end
-
-        # Initializes and/or returns the tab stack.
-        # You won't probably need to use this method directly
-        # unless you are trying to hack the plugin architecture.
-        #
-        # Returns the Hash stack.
-        def tab_stack
-          @tab_stack ||= {}
-        end
-
     end
 
     module HelperMethods
@@ -213,7 +210,7 @@ module TabsOnRails
       def tabs_tag(options = {}, &block)
         Tabs.new(self, { :namespace => :default }.merge(options)).render(&block)
       end
-
     end
+
   end
 end

@@ -1,5 +1,9 @@
 = Changelog
 
+== Master
+
+* FIXED: Fixed Rails 3.2 ActiveSupport::Concern deprecation warning (GH-18).
+
 
 == Release 2.0.2
 
