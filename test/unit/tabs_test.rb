@@ -81,4 +81,14 @@ class TabsTest < ActionView::TestCase
                  @tabs.welcome('Welcome', '#')
   end
 
+  def test_tab_for_with_block
+    @tabs = TabsOnRails::Tabs.new(@template, :builder => BlockBuilder)
+    expected = %Q{<li class="current"><a href="http://dashboard.com/">Foo Bar</a>More Content</li>}
+    result   = @tabs.dashboard('Foo Bar', 'http://dashboard.com/') do
+      "More Content"
+    end
+
+    assert_dom_equal expected, result
+  end
+
 end
