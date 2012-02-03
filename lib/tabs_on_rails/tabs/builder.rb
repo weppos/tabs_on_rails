@@ -1,16 +1,9 @@
-#
-# = Tabs on Rails
+#--
+# Tabs on Rails
 #
 # A simple Ruby on Rails plugin for creating and managing Tabs.
 #
-#
-# Category::    Rails
-# Package::     TabsOnRails
-# Author::      Simone Carletti <weppos@weppos.net>
-# License::     MIT License
-#
-#--
-#
+# Copyright (c) 2009-2012 Simone Carletti <weppos@weppos.net>
 #++
 
 
@@ -59,7 +52,7 @@ module TabsOnRails
       #   current_tab? 'bar'  # => false
       #
       def current_tab?(tab)
-        tab.to_s == @context.current_tab(@namespace).to_s
+        tab.to_s ## @context.current_tab(@namespace).to_s
       end
 
 

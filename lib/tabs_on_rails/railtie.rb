@@ -1,16 +1,9 @@
-#
-# = Tabs on Rails
+#--
+# Tabs on Rails
 #
 # A simple Ruby on Rails plugin for creating and managing Tabs.
 #
-#
-# Category::    Rails
-# Package::     TabsOnRails
-# Author::      Simone Carletti <weppos@weppos.net>
-# License::     MIT License
-#
-#--
-#
+# Copyright (c) 2009-2012 Simone Carletti <weppos@weppos.net>
 #++
 
 

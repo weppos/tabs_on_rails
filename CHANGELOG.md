@@ -1,7 +1,9 @@
 # Changelog
 
 
-## Master
+## Release 2.1.0
+
+* NEW: Support for Rails 3.2.
 
 * FIXED: Fixed Rails 3.2 ActiveSupport::Concern deprecation warning (GH-18).
 
