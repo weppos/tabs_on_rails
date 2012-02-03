@@ -1,22 +1,6 @@
 require 'test_helper'
 
-class TabsTest < ActiveSupport::TestCase
-
-  Template = Class.new do
-    include ActionView::Helpers::TagHelper
-    include ActionView::Helpers::UrlHelper
-
-    def current_tab(namespace)
-      case namespace
-        when nil, :default
-          :dashboard
-        when :foospace
-          :footab
-        else
-          :elsetab
-      end
-    end
-  end
+class TabsTest < ActionView::TestCase
 
   OpenZeroArgsBuilder = Class.new(TabsOnRails::Tabs::Builder) do
     def open_tabs
@@ -41,21 +25,20 @@ class TabsTest < ActiveSupport::TestCase
 
 
   def setup
-    @template = Template.new
-    @klass    = TabsOnRails::Tabs
-    @tabs     = @klass.new(@template)
+    @template = self
+    @tabs     = TabsOnRails::Tabs.new(@template)
   end
 
 
   def test_initialize
-    @tabs = @klass.new(@template)
+    @tabs = TabsOnRails::Tabs.new(@template)
     assert_equal @template, @tabs.instance_variable_get(:"@context")
     assert_instance_of TabsOnRails::Tabs::TabsBuilder, @tabs.instance_variable_get(:"@builder")
   end
 
   def test_initialize_with_option_builder
     builder = Class.new(TabsOnRails::Tabs::TabsBuilder)
-    @tabs = @klass.new(@template, :builder => builder)
+    @tabs = TabsOnRails::Tabs.new(@template, :builder => builder)
     assert_equal @template, @tabs.instance_variable_get(:"@context")
     assert_instance_of builder, @tabs.instance_variable_get(:"@builder")
   end
@@ -70,7 +53,7 @@ class TabsTest < ActiveSupport::TestCase
   end
 
   def test_open_tabs_should_ignore_options_if_arity_is_zero
-    @tabs = @klass.new(@template, :builder => OpenZeroArgsBuilder)
+    @tabs = TabsOnRails::Tabs.new(@template, :builder => OpenZeroArgsBuilder)
     assert_nothing_raised do 
       assert_equal '<ul>', @tabs.open_tabs(:class => "foo")
     end
@@ -86,7 +69,7 @@ class TabsTest < ActiveSupport::TestCase
   end
 
   def test_open_tabs_should_ignore_options_if_arity_is_zero
-    @tabs = @klass.new(@template, :builder => CloseZeroArgsBuilder)
+    @tabs = TabsOnRails::Tabs.new(@template, :builder => CloseZeroArgsBuilder)
     assert_nothing_raised do 
       assert_equal '</ul>', @tabs.close_tabs(:class => "foo")
     end

@@ -1,21 +1,6 @@
 require 'test_helper'
 
 class BlockBuilderTest < ActionView::TestCase
-  tests TabsOnRails::ActionController::HelperMethods
-
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::UrlHelper
-
-  def current_tab(namespace)
-    case namespace
-      when nil, :default
-        :dashboard
-      when :foospace
-        :footab
-      else
-        :elsetab
-    end
-  end
 
   class BlockBuilder < TabsOnRails::Tabs::TabsBuilder
     def tab_for(tab, name, options, item_options = {}, &block)
@@ -26,9 +11,9 @@ class BlockBuilderTest < ActionView::TestCase
     end
   end
 
+
   def setup
-    @klass    = BlockBuilder
-    @builder  = @klass.new(self)
+    @builder  = BlockBuilder.new(self)
   end
 
   def test_tab_for_with_block
