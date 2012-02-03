@@ -64,7 +64,7 @@ Use the `current_tab` helper method if you need to access the value of current t
     # In your view
     <p>The name of current tab is <%= current_tab %>.</p>
 
-Read the [documentation](/code/tabs_on_rails/docs/) to learn more about advanced usage, builders and namespaces.
+Read the [documentation](http://www.simonecarletti.com/code/tabs_on_rails/docs/) to learn more about advanced usage, builders and namespaces.
 
 
 ## Credits
