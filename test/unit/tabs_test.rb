@@ -43,6 +43,17 @@ class TabsTest < ActionView::TestCase
     assert_instance_of builder, @tabs.instance_variable_get(:"@builder")
   end
 
+  def test_initialize_with_default_builder
+    default_builder = TabsOnRails::Tabs.default_builder
+    TabsOnRails::Tabs.default_builder = CustomBuilder
+
+    custom_tab = TabsOnRails::Tabs.new(@template) # doesnt need argument :builder => CustomBuilder
+
+    assert_instance_of CustomBuilder, custom_tab.instance_variable_get(:"@builder")
+
+    TabsOnRails::Tabs.default_builder = default_builder
+  end
+
 
   def test_open_tabs
     assert_equal '<ul>', @tabs.open_tabs
@@ -89,6 +100,23 @@ class TabsTest < ActionView::TestCase
     end
 
     assert_dom_equal expected, result
+  end
+
+  class CustomBuilder < TabsOnRails::Tabs::Builder
+    def open_tabs(options = {})
+      @context.tag("ul", options, open = true)
+    end
+
+    def close_tabs(options = {})
+      "</ul>".html_safe
+    end
+
+    def tab_for(tab, name, options, item_options = {})
+      item_options[:class] = (current_tab?(tab) ? 'active' : '')
+      @context.content_tag(:li, item_options) do
+        @context.link_to(name, options)
+      end
+    end
   end
 
 end
