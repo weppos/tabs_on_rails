@@ -15,9 +15,12 @@ module TabsOnRails
 
   class Tabs
 
+    mattr_accessor :default_builder
+    @@default_builder = TabsBuilder
+
     def initialize(context, options = {})
       @context = context
-      @builder = (options.delete(:builder) || TabsBuilder).new(@context, options)
+      @builder = (options.delete(:builder) || self.class.default_builder).new(@context, options)
       @options = options
     end
 
