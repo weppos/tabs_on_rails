@@ -67,11 +67,6 @@ Use the `current_tab` helper method if you need to access the value of current t
 Read the [documentation](http://www.simonecarletti.com/code/tabs_on_rails/docs/) to learn more about advanced usage, builders and namespaces.
 
 
-## Credits
-
-* [Simone Carletti](http://www.simonecarletti.com/) <weppos@weppos.net> - The Author
-
-
 ## Resources
 
 * [Homepage](http://www.simonecarletti.com/code/tabs_on_rails)
@@ -83,4 +78,4 @@ Read the [documentation](http://www.simonecarletti.com/code/tabs_on_rails/docs/)
 
 ## License
 
-*TabsOnRails* is Copyright (c) 2009-2012 Simone Carletti. This is Free Software distributed under the MIT license.
+Copyright (c) 2009-2012 Simone Carletti. This is Free Software distributed under the MIT license.
