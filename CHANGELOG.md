@@ -1,6 +1,11 @@
 # Changelog
 
 
+## Master
+
+* NEW: Ability to configure a default builder (GH-20). [Thanks @ilstar]
+
+
 ## Release 2.1.1
 
 * FIXED: An invalid replace command caused a bug in 2.1.0.
