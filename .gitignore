@@ -1,4 +1,8 @@
+# Bundler
 .bundle
-.idea
 pkg/*
-rdoc
+Gemfile.lock
+
+# YARD
+.yardoc
+yardoc/
