@@ -5,6 +5,8 @@
 
 * NEW: Ability to configure a default builder (GH-20). [Thanks @ilstar]
 
+* NEW: Ability to pass a custom value for the "active" class (GH-23). [Thanks @ruurd]
+
 
 ## Release 2.1.1
 
