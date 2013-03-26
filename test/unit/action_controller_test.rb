@@ -164,6 +164,14 @@ class WorkingMixinTest < ActionController::TestCase
 </li></ul>}, @response.body)
   end
 
+  def test_render_with_option_active_class
+    get :action_dashboard, :template => "with_option_active_class"
+    assert_dom_equal(%Q{<ul id="tabs">
+  <li class="active"><span>Dashboard</span></li>
+  <li><a href="/w">Welcome</a></li>
+</ul>}, @response.body)
+  end
+
 
   def test_set_tab
     get :action_dashboard

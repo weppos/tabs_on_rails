@@ -156,7 +156,15 @@ module TabsOnRails
       #   # In your view
       #   <p>The name of current tab is <%= current_tab %>.</p>
       #
-      # === Customizing a Tab
+      #
+      # == Options
+      #
+      # You can pass the following options:
+      #
+      # - <tt>builder</tt>: the custom builder to use
+      # - <tt>active_class</tt>: the custom CSS class to use for active links
+      #
+      # == Customizing a Tab
       #
       # You can pass a hash of options to customize the style and the behavior of the tab item.
       # Behind the scenes, each time you create a tab, the <tt>#tab_for</tt> 
@@ -175,13 +183,10 @@ module TabsOnRails
       #   </ul>
       #
       # You can pass any option supported by the <li>content_tag</li> Rails helper.
-      # Additionally, the following options have a special meaning:
-      #
-      # * <tt>link_current</tt>: forces the current tab to be a link, instead of a span tag
       #
       # See <tt>TabsOnRails::Tabs::TabsBuilder#tab_for</tt> for more details.
       #
-      # === Customizing open_tabs and close_tabs
+      # == Customizing open_tabs and close_tabs
       #
       # The open_tabs and the close_tabs methods can be customized 
       # with the <tt>:open_tabs</tt> and <tt>:close_tabs</tt> option.

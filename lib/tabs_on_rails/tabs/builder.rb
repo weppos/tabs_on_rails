@@ -35,7 +35,6 @@ module TabsOnRails
       def initialize(context, options = {})
         @context   = context
         @namespace = options.delete(:namespace) || :default
-        @current   = options.delete(:current) || 'current'
         @options   = options
       end
 
