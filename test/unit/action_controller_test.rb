@@ -105,13 +105,14 @@ class WorkingMixinTestController < ActionController::Base
     execute("action_welcome")
   end
 
+
   private
 
-    def execute(method)
-      if method.to_s =~ /^action_(.*)/
-        render :action => (params[:template] || 'default')
-      end
+  def execute(method)
+    if method.to_s =~ /^action_(.*)/
+      render :action => (params[:template] || 'default')
     end
+  end
 
 
   class BlockBuilder < TabsOnRails::Tabs::TabsBuilder
