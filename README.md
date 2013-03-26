@@ -78,4 +78,4 @@ Read the [documentation](http://www.simonecarletti.com/code/tabs_on_rails/docs/)
 
 ## License
 
-Copyright (c) 2009-2012 Simone Carletti. This is Free Software distributed under the MIT license.
+Copyright (c) 2009-2013 Simone Carletti. This is Free Software distributed under the MIT license.
