@@ -4,6 +4,7 @@ class TabsBuilderTest < ActionView::TestCase
 
   def setup
     @builder  = TabsOnRails::Tabs::TabsBuilder.new(self)
+    @bootbldr = TabsOnRails::Tabs::TabsBuilder.new(self, :current => "active")
   end
 
   def test_inherits_from_builder
@@ -60,4 +61,14 @@ class TabsBuilderTest < ActionView::TestCase
                      @builder.tab_for(:welcome, "Welcome", "#", :style => "padding: 10px")
   end
 
+  def test_tab_for_with_item_options_current
+    assert_dom_equal %Q{<li class="custom active"><span>Dashboard</span></li>},
+                     @bootbldr.tab_for(:dashboard, "Dashboard", "#", :class => "custom")
+    assert_dom_equal %Q{<li class="custom"><a href="#">Welcome</a></li>},
+                     @bootbldr.tab_for(:welcome, "Welcome", "#", :class => "custom")
+    assert_dom_equal %Q{<li style="padding: 10px" class="active"><span>Dashboard</span></li>},
+                     @bootbldr.tab_for(:dashboard, "Dashboard", "#", :style => "padding: 10px")
+    assert_dom_equal %Q{<li style="padding: 10px"><a href="#">Welcome</a></li>},
+                     @bootbldr.tab_for(:welcome, "Welcome", "#", :style => "padding: 10px")
+  end
 end

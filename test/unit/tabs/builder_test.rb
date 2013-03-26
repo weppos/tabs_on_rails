@@ -32,6 +32,14 @@ class BuilderTest < ActionView::TestCase
     assert_equal :foobar, @builder.instance_variable_get(:"@namespace")
   end
 
+  def test_initialize_should_set_current
+    @builder = TabsOnRails::Tabs::Builder.new(@template)
+    assert_equal 'current', @builder.instance_variable_get(:"@current")
+
+    @builder = TabsOnRails::Tabs::Builder.new(@template, :current => 'active')
+    assert_equal 'active', @builder.instance_variable_get(:"@current")
+  end
+
   def test_initialize_should_set_options
     @builder = TabsOnRails::Tabs::Builder.new(@template)
     assert_equal({}, @builder.instance_variable_get(:"@options"))
