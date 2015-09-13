@@ -321,6 +321,11 @@ renders
 ```
 
 
+## Credits
+
+<tt>TabsOnRails</tt> was created and is maintained by [Simone Carletti](http://simonecarletti.com/).
+
+
 ## More Information
 
 * [Homepage](http://www.simonecarletti.com/code/tabs-on-rails)
