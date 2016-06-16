@@ -14,8 +14,8 @@ module TabsOnRails
 
     included do
       extend        ClassMethods
-      helper        HelperMethods
-      helper_method :current_tab, :current_tab?
+      ::ActionController::Base.helper        HelperMethods
+      ::ActionController::Base.helper_method :current_tab, :current_tab?
     end
 
     
