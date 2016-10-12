@@ -217,9 +217,9 @@ To switch namespace in your template, just pass the `:namespace` option to the `
 <% end %>
 
 <%= tabs_tag :namespace => :navigation do |tab| %>
-  <%= tab.first   'First', first_project_path %>
-  <%= tab.second  'Second', second_project_path %>
-  <%= tab.third   'Account', third_project_path %>
+  <%= tab.first   'First', project_first_path %>
+  <%= tab.second  'Second', project_second_path %>
+  <%= tab.third   'Account', project_third_path %>
 <% end %>
 ```
 
