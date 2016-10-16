@@ -42,6 +42,13 @@ class TabsBuilderTest < ActionView::TestCase
                      @builder.tab_for(:dashboard, 'Foo Dashboard', '#')
   end
 
+  def test_tab_for_should_return_link_if_current_tab_and_current_tab_as_link_is_true
+    assert_dom_equal %Q{<li class="current"><a href="#">Dashboard</a></li>},
+                     @builder.tab_for(:dashboard, 'Dashboard', '#', current_tab_as_link: true)
+    assert_dom_equal %Q{<li class="current"><a href="#">Foo Dashboard</a></li>},
+                     @builder.tab_for(:dashboard, 'Foo Dashboard', '#', current_tab_as_link: true)
+  end
+
   def test_tab_for_with_options_as_uri
     assert_dom_equal %Q{<li><a href="http://welcome.com/">Foo Bar</a></li>},
                      @builder.tab_for(:welcome, 'Foo Bar', 'http://welcome.com/')

@@ -8,7 +8,7 @@ require "rails/railtie"
 class Dummy
   Routes = ActionDispatch::Routing::RouteSet.new
   Routes.draw do
-    match ':controller(/:action(/:id))'
+    get ':controller(/:action(/:id))'
   end
 end
 
