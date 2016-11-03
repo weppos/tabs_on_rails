@@ -85,7 +85,7 @@ module TabsOnRails
       #   set_tab :foo, :namespace
       #
       # The <tt>set_tab</tt> method understands all options you are used to pass to a Rails controller filter.
-      # In fact, behind the scenes this method uses a <tt>before_filter</tt>
+      # In fact, behind the scenes this method uses a <tt>before_action</tt>
       # to store the tab in the <tt>@tab_stack</tt> variable.
       # For example, you can set the tab only for a restricted group of actions in the same controller
       # using the <tt>:only</tt> and <tt>:except</tt> options.
@@ -103,7 +103,7 @@ module TabsOnRails
         options = args.extract_options!
         name, namespace = args
 
-        before_filter(options) do |controller|
+        before_action(options) do |controller|
           controller.send(:set_tab, name, namespace)
         end
       end
