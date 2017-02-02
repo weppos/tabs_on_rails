@@ -1,6 +1,11 @@
 # Changelog
 
 
+## master
+
+- CHANGED: Compatible with Rails 5.
+
+
 ## Release 2.2.0
 
 * NEW: Ability to configure a default builder (GH-20). [Thanks @ilstar]

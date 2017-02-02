@@ -228,16 +228,8 @@ class ControllerMixinHelpersTest < ActionView::TestCase
   include ActionView::Helpers::UrlHelper
 
   MockBuilder = Class.new(TabsOnRails::Tabs::Builder) do
-    def initialize_with_mocha(*args)
-      checkpoint
-      initialize_without_mocha(*args)
-    end
-    alias_method_chain :initialize, :mocha
-
-    def checkpoint
-    end
-
     def tab_for(tab, name, *args)
+      "-> #{name}"
     end
   end
 
@@ -263,14 +255,8 @@ class ControllerMixinHelpersTest < ActionView::TestCase
   def test_tabs_tag_should_raise_local_jump_error_without_block
     assert_raise(LocalJumpError) { tabs_tag }
   end
-  
-  def test_tabs_tag_with_builder
-    MockBuilder.any_instance.expects(:checkpoint).once
-    tabs_tag(:builder => MockBuilder) { "" }
-  end
 
   def test_tabs_tag_with_namespace
-    MockBuilder.any_instance.expects(:checkpoint).once
     tabs_tag(:builder => MockBuilder, :namespace => :custom) do |tabs|
       builder = tabs.instance_variable_get(:'@builder')
       assert_equal(:custom, builder.instance_variable_get(:'@namespace'))

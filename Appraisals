@@ -1,11 +1,6 @@
-appraise "3.0" do
-  gem "activerecord", "~> 3.0"
+appraise "4.2" do
+  gem "rails", "~> 4.2.0"
 end
-
-appraise "3.1" do
-  gem "activerecord", "~> 3.1"
-end
-
-appraise "3.2" do
-  gem "activerecord", "~> 3.2"
+appraise "5.0" do
+  gem "rails", "~> 5.0.0"
 end

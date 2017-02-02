@@ -3,7 +3,7 @@
 #
 # A simple Ruby on Rails plugin for creating and managing Tabs.
 #
-# Copyright (c) 2009-2013 Simone Carletti <weppos@weppos.net>
+# Copyright (c) 2009-2017 Simone Carletti <weppos@weppos.net>
 #++
 
 
@@ -14,9 +14,13 @@ require 'tabs_on_rails/tabs/tabs_builder'
 module TabsOnRails
 
   class Tabs
+    class << self
+      attr_writer :default_builder
 
-    mattr_accessor :default_builder
-    @@default_builder = TabsBuilder
+      def default_builder
+        @default_builder ||= TabsBuilder
+      end
+    end
 
     def initialize(context, options = {})
       @context = context

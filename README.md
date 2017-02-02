@@ -5,26 +5,22 @@
 
 ## Requirements
 
-* Rails 3 or 4
+- Rails 4.2 or Rails 5
 
-Please note 
-
-- <tt>TabsOnRails</tt> 2.x requires Rails 3. Use TabsOnRails 1.3.x with Rails 2.
-- <tt>TabsOnRails</tt> doesn't work with Rails 2.1 or lower
-([comment](http://www.simonecarletti.com/blog/2009/04/tabsonrails/#comment-2901) and [commit](http://github.com/weppos/tabs_on_rails/commit/d5ae9f401e3d0acc87251fa8957a8625e90ba4b3)).
+For older versions of Ruby or Ruby on Rails, see the [CHANGELOG](CHANGELOG.md).
 
 
 ## Installation
 
-[RubyGems](https://rubygems.org) is the preferred way to install <tt>TabsOnRails</tt> and the best way if you want install a stable version.
-
-    $ gem install tabs_on_rails
-
-Specify the Gem dependency in the [Bundler](http://bundler.io) `Gemfile`.
+Add this line to your application's `Gemfile`:
 
     gem "tabs_on_rails"
 
-Use [Bundler](http://bundler.io) and the [:git option](http://bundler.io/v1.0/git.html) if you want to grab the latest version from the Git repository.
+And then execute `bundle` to install the dependencies:
+
+    $ bundle
+
+Use [Bundler](http://bundler.io/) and the `:git` option if you want to grab the latest version from the Git repository.
 
 
 ## Usage
@@ -323,17 +319,25 @@ renders
 
 ## Credits
 
-<tt>TabsOnRails</tt> was created and is maintained by [Simone Carletti](http://simonecarletti.com/).
+<tt>TabsOnRails</tt> was created and is maintained by [Simone Carletti](https://simonecarletti.com/). Many improvements and bugfixes were contributed by the [open source community](https://github.com/weppos/tabs_on_rails/graphs/contributors).
+
+
+## Contributing
+
+Direct questions and discussions to [Stack Overflow](http://stackoverflow.com/questions/tagged/tabs-on-rails).
+
+[Pull requests](https://github.com/weppos/tabs_on_rails) are very welcome! Please include tests for every patch, and create a topic branch for every separate change you make.
+
+Report issues or feature requests to [GitHub Issues](https://github.com/weppos/tabs_on_rails/issues).
 
 
 ## More Information
 
-* [Homepage](http://www.simonecarletti.com/code/tabs-on-rails)
-* [API](http://rubydoc.info/gems/tabs_on_rails)
-* [Repository](https://github.com/weppos/tabs_on_rails)
-* [Issue Tracker](https://github.com/weppos/tabs_on_rails/issues)
+- [Homepage](https://simonecarletti.com/code/tabs-on-rails)
+- [RubyGems](https://rubygems.org/gems/tabs_on_rails)
+- [Issues](https://github.com/weppos/tabs_on_rails/issues)
 
 
 ## License
 
-Copyright (c) 2009-2015 Simone Carletti. This is Free Software distributed under the MIT license.
+Copyright (c) 2009-2017 Simone Carletti. This is Free Software distributed under the MIT license.

@@ -65,19 +65,19 @@ class BuilderTest < ActionView::TestCase
 
 
   def test_open_tabs
-    assert_equal nil, @builder.open_tabs
+    assert_nil @builder.open_tabs
   end
 
   def test_open_tabs_with_options
-    assert_equal nil, @builder.open_tabs(:foo => "bar")
+    assert_nil @builder.open_tabs(:foo => "bar")
   end
 
   def test_close_tabs
-    assert_equal nil, @builder.close_tabs
+    assert_nil @builder.close_tabs
   end
 
   def test_close_tabs_with_options
-    assert_equal nil, @builder.close_tabs(:foo => "bar")
+    assert_nil @builder.close_tabs(:foo => "bar")
   end
 
 

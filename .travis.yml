@@ -1,12 +1,15 @@
 rvm:
-  - 1.8.7
-  - 1.9.2
-  - 1.9.3
-  - ree
+  - 2.2.5
+  - 2.3.1
+  - 2.4.0
+
 gemfile:
-  - gemfiles/3.0.gemfile
-  - gemfiles/3.1.gemfile
-  - gemfiles/3.2.gemfile
-notifications:
-  recipients:
-    - weppos@weppos.net
+  - gemfiles/4.2.gemfile
+  - gemfiles/5.0.gemfile
+
+before_install:
+  - gem install bundler
+
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true

@@ -1,11 +1,12 @@
 # Bundler
-.bundle
-pkg/*
-Gemfile.lock
-
-# RVM
-.rvmrc
+/.bundle/
+/Gemfile.lock
+gemfiles/*.gemfile.lock
 
 # YARD
-.yardoc
-yardoc/
+/.yardoc
+/_yardoc/
+
+# Artifacts
+/pkg/
+/tmp/
