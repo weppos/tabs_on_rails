@@ -1,9 +1,10 @@
 # Changelog
 
 
-## master
+## Release 3.0.0
 
 - CHANGED: Compatible with Rails 5.
+- CHANGED: Dropped support for Rails before 4.2 and Ruby before 2.2.
 
 
 ## Release 2.2.0
