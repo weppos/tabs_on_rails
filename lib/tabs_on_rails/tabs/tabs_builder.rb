@@ -39,8 +39,9 @@ module TabsOnRails
       #
       def tab_for(tab, name, url_options, item_options = {})
         item_options[:class] = item_options[:class].to_s.split(" ").push(@options[:active_class] || "current").join(" ") if current_tab?(tab)
-        content = @context.link_to_unless(current_tab?(tab), name, url_options) do
-          @context.content_tag(:span, name)
+        inner_options = item_options.delete(:inner_options) || {}
+        content = @context.link_to_unless(current_tab?(tab), name, url_options, inner_options) do
+          @context.content_tag(:span, name, inner_options)
         end
         @context.content_tag(:li, content, item_options)
      end
