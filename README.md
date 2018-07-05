@@ -106,7 +106,7 @@ See `TabsOnRails::Tabs::TabsBuilder#tab_for` for more details.
 The `open_tabs` and the `close_tabs` methods can be customized with the `:open_tabs` and `:close_tabs` option.
 
 ```ruby
-<%= tabs_tag :open_tabs => { :id => "tabs", :class => "cool" } do |tab| %>
+<%= tabs_tag open_tabs: { id: 'tabs', class: 'cool' } do |tab| %>
   <%= tab.home      'Homepage', root_path %>
   <%= tab.dashboard 'Dashboard', dashboard_path %>
   <%= tab.account   'Account', account_path %>
@@ -302,7 +302,7 @@ In your view, simply pass the builder class to the `tabs_tag` method.
 <%= tabs_tag(:builder => MenuTabBuilder) do |tab| %>
   <%= tab.home        'Homepage', root_path %>
   <%= tab.dashboard,  'Dashboard', dashboard_path %>
-  <%= tab.account     'Account', account_path, :style => 'float: right;' %>
+  <%= tab.account     'Account', account_path, style: 'float: right;' %>
 <% end %>
 ```
 
