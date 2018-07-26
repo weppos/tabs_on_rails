@@ -14,7 +14,7 @@ For older versions of Ruby or Ruby on Rails, see the [CHANGELOG](CHANGELOG.md).
 
 Add this line to your application's `Gemfile`:
 
-    gem "tabs_on_rails"
+    gem 'tabs_on_rails'
 
 And then execute `bundle` to install the dependencies:
 
@@ -29,9 +29,9 @@ In your template use the `tabs_tag` helper to create your tab.
 
 ```ruby
 <%= tabs_tag do |tab| %>
-  <%= tab.home      'Homepage', root_path %>
+  <%= tab.home      'Homepage',  root_path %>
   <%= tab.dashboard 'Dashboard', dashboard_path %>
-  <%= tab.account   'Account', account_path %>
+  <%= tab.account   'Account',   account_path %>
 <% end %>
 ```
 
@@ -84,7 +84,7 @@ Behind the scenes, each time you create a tab, the `#tab_for` method is invoked.
 
 ```ruby
 <%= tabs_tag do |tab| %>
-  <%= tab.home      'Homepage', root_path, :style => "padding: 10px" %>
+  <%= tab.home      'Homepage', root_path, style: "padding: 10px" %>
   <%= tab.dashboard 'Dashboard', dashboard_path %>
 <% end %>
 ```
@@ -107,9 +107,9 @@ The `open_tabs` and the `close_tabs` methods can be customized with the `:open_t
 
 ```ruby
 <%= tabs_tag open_tabs: { id: 'tabs', class: 'cool' } do |tab| %>
-  <%= tab.home      'Homepage', root_path %>
+  <%= tab.home      'Homepage',  root_path %>
   <%= tab.dashboard 'Dashboard', dashboard_path %>
-  <%= tab.account   'Account', account_path %>
+  <%= tab.account   'Account',   account_path %>
 <% end %>
 ```
 
@@ -136,7 +136,7 @@ Taking advantage of Rails filter options, you can restrict a tab to a selected g
 ```ruby
 class PostsController < ApplicationController
   set_tab :admin
-  set_tab :posts, :only => %w(index show)
+  set_tab :posts, only: %w(index show)
 end
 
 class ApplicationController < ActionController::Base
@@ -182,9 +182,9 @@ class ProjectsController
   set_tab :projects
 
   # Create an other tab navigation level
-  set_tab :first, :navigation, :only => %w(first)
-  set_tab :second, :navigation, :only => %w(second)
-  set_tab :third, :navigation, :only => %w(third)
+  set_tab :first, :navigation,  only: %w(first)
+  set_tab :second, :navigation, only: %w(second)
+  set_tab :third, :navigation,  only: %w(third)
 
   def first; end
   def second; end
@@ -207,14 +207,14 @@ To switch namespace in your template, just pass the `:namespace` option to the `
 
 ```ruby
 <%= tabs_tag do |tab| %>
-  <%= tab.home      'Homepage', root_path %>
+  <%= tab.home      'Homepage',  root_path %>
   <%= tab.dashboard 'Dashboard', dashboard_path %>
-  <%= tab.projects  'Projects', projects_path %>
+  <%= tab.projects  'Projects',  projects_path %>
 <% end %>
 
 <%= tabs_tag :namespace => :navigation do |tab| %>
-  <%= tab.first   'First', project_first_path %>
-  <%= tab.second  'Second', project_second_path %>
+  <%= tab.first   'First',   project_first_path %>
+  <%= tab.second  'Second',  project_second_path %>
   <%= tab.third   'Account', project_third_path %>
 <% end %>
 ```
@@ -233,8 +233,8 @@ end
 class DashboardController
   set_tab :dashboard
 
-  set_tab :index,  :navigation, :only => %w(index)
-  set_tab :common, :navigation, :only => %w(foo bar)
+  set_tab :index,  :navigation, only: %w(index)
+  set_tab :common, :navigation, only: %w(foo bar)
   
   # ...
 end
@@ -242,9 +242,9 @@ end
 class ProjectsController
   set_tab :projects
 
-  set_tab :first,  :navigation, :only => %w(first)
-  set_tab :second, :navigation, :only => %w(second)
-  set_tab :third,  :navigation, :only => %w(third)
+  set_tab :first,  :navigation, only: %w(first)
+  set_tab :second, :navigation, only: %w(second)
+  set_tab :third,  :navigation, only: %w(third)
   
   # ...
 end
@@ -299,7 +299,7 @@ end
 In your view, simply pass the builder class to the `tabs_tag` method.
 
 ```ruby
-<%= tabs_tag(:builder => MenuTabBuilder) do |tab| %>
+<%= tabs_tag(builder: MenuTabBuilder) do |tab| %>
   <%= tab.home        'Homepage', root_path %>
   <%= tab.dashboard,  'Dashboard', dashboard_path %>
   <%= tab.account     'Account', account_path, style: 'float: right;' %>
