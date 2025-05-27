@@ -54,7 +54,7 @@ module TabsOnRails
       open_tabs_options  = options.delete(:open_tabs)  || {}
       close_tabs_options = options.delete(:close_tabs) || {}
 
-      "".tap do |html|
+      String.new.tap do |html|
         html << open_tabs(open_tabs_options).to_s
         html << @context.capture(self, &block)
         html << close_tabs(close_tabs_options).to_s
