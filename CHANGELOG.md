@@ -1,5 +1,9 @@
 # Changelog
 
+## main
+
+- FIXED: Frozen string warning (GH-43)
+
 
 ## Release 3.0.0
 
